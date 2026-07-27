@@ -36,24 +36,22 @@ Review README.md and AGENTS.md. Preview this static site locally. Do not change 
 After approval:
 
 ```text
-Deploy this static site to Cloudflare Pages. Use the existing Cloudflare account and do not change DNS without showing me the proposed change first.
+Push to the GitHub repo connected to Cloudflare Pages. Do not change DNS without showing me the proposed change first.
 ```
 
-### Cloudflare Pages settings
+### Cloudflare Pages settings (Git)
+
+Connect the GitHub repo in Cloudflare Pages with:
 
 - Framework preset: None
 - Build command: leave blank
+- Deploy command: leave blank
 - Build output directory: `/`
 - Root directory: `/`
 
-You can also deploy from the terminal:
+Do not use a Wrangler deploy command for this project. Cloudflare should publish the static files from the repo root.
 
-```bash
-npm install
-npm run deploy
-```
-
-Wrangler will ask you to log in and select or create a Pages project.
+After the first Git deploy succeeds, custom domains can be attached in Pages → Custom domains. Ask before changing DNS.
 
 ## Editing
 
