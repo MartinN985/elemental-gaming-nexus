@@ -1,0 +1,14 @@
+{
+  "name": "elemental-gaming-nexus",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static public website for Elemental Gaming Nexus",
+  "scripts": {
+    "preview": "python -m http.server 8000",
+    "build": "node scripts/build.mjs",
+    "deploy": "wrangler deploy"
+  },
+  "devDependencies": {
+    "wrangler": "^4.0.0"
+  }
+}

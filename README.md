@@ -39,19 +39,17 @@ After approval:
 Push to the GitHub repo connected to Cloudflare Pages. Do not change DNS without showing me the proposed change first.
 ```
 
-### Cloudflare Pages settings (Git)
+### Cloudflare Workers / Pages settings (Git)
 
-Connect the GitHub repo in Cloudflare Pages with:
+Use these build settings:
 
-- Framework preset: None
-- Build command: leave blank
-- Deploy command: leave blank
-- Build output directory: `/`
+- Build command: `npm run build`
+- Deploy command: `npm run deploy`
 - Root directory: `/`
 
-Do not use a Wrangler deploy command for this project. Cloudflare should publish the static files from the repo root.
+The build copies only the public static files into `dist/`. Wrangler then deploys that folder, not `node_modules`.
 
-After the first Git deploy succeeds, custom domains can be attached in Pages → Custom domains. Ask before changing DNS.
+After the first Git deploy succeeds, custom domains can be attached in the project settings. Ask before changing DNS.
 
 ## Editing
 
