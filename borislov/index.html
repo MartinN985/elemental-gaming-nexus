@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Operation Borislov Connection // Editable Dashboard</title>
+<style>
+:root{
+  --bg:#020806;
+  --panel:#06110d;
+  --panel2:#091914;
+  --green:#8df8b3;
+  --green2:#3dbf78;
+  --amber:#ffb64d;
+  --cyan:#6bd9e8;
+  --red:#ff5a53;
+  --dim:#32624a;
+  --line:rgba(109,240,164,.26);
+  --shadow:0 0 12px rgba(80,255,150,.28);
+}
+*{box-sizing:border-box}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#000;color:var(--green);font-family:"Courier New","Lucida Console",monospace}
+body{background:radial-gradient(circle at 50% 45%,rgba(21,70,51,.25),transparent 55%),linear-gradient(180deg,#020806,#000402)}
+#app{position:relative;width:100vw;height:100vh;padding:1.35vh 1.25vw 1.1vh;display:grid;grid-template-rows:6.6vh 1fr 18vh;gap:1vh;isolation:isolate;filter:saturate(.92) contrast(1.05)}
+#app:before{content:"";position:absolute;inset:0;pointer-events:none;z-index:40;background:repeating-linear-gradient(0deg,rgba(255,255,255,.026) 0,rgba(255,255,255,.026) 1px,transparent 1px,transparent 4px),linear-gradient(90deg,rgba(255,0,0,.015),rgba(0,255,255,.012));mix-blend-mode:screen;opacity:.7}
+#app:after{content:"";position:absolute;inset:-3%;pointer-events:none;z-index:41;box-shadow:inset 0 0 11vw #000,inset 0 0 4vw #000;border-radius:4%}
+.scan{position:absolute;z-index:35;left:0;right:0;height:12vh;top:-14vh;pointer-events:none;background:linear-gradient(180deg,transparent,rgba(99,255,168,.055),transparent);animation:scan 7s linear infinite}
+@keyframes scan{to{transform:translateY(120vh)}}
+.glitch{animation:glitch 9s steps(1,end) infinite}
+@keyframes glitch{0%,94%,100%{transform:none;filter:none}95%{transform:translateX(2px);filter:hue-rotate(10deg)}96%{transform:translateX(-3px) skewX(.2deg);filter:contrast(1.25)}97%{transform:none}}
+.frame{border:1px solid var(--line);background:linear-gradient(180deg,rgba(10,28,21,.92),rgba(2,10,7,.92));box-shadow:var(--shadow),inset 0 0 25px rgba(27,134,76,.07);position:relative;overflow:hidden}
+.frame:before,.frame:after{content:"";position:absolute;width:16px;height:16px;pointer-events:none;z-index:5}
+.frame:before{left:-1px;top:-1px;border-left:2px solid var(--green2);border-top:2px solid var(--green2)}
+.frame:after{right:-1px;bottom:-1px;border-right:2px solid var(--green2);border-bottom:2px solid var(--green2)}
+.topbar{display:grid;grid-template-columns:1.2fr 2.4fr 1.15fr;align-items:center;padding:0 1vw;border-bottom-color:rgba(255,182,77,.38)}
+.classified{font-size:1.3vh;letter-spacing:.22em;color:var(--amber)}
+.title{text-align:center;line-height:1}
+.title strong{display:block;font-size:2.15vh;letter-spacing:.12em;color:#b7ffd0;text-shadow:0 0 12px rgba(110,255,165,.35)}
+.title small{font-size:1.05vh;color:var(--cyan);letter-spacing:.25em}
+.clock{text-align:right}
+.clock b{display:block;font-size:1.6vh;color:var(--amber);letter-spacing:.08em}
+.clock span{font-size:1vh;color:var(--dim)}
+.main{display:grid;grid-template-columns:22vw 1fr 22vw;gap:.8vw;min-height:0}
+.side{display:grid;gap:.8vh;min-height:0}
+.left{grid-template-rows:25vh 17vh 1fr}
+.right{grid-template-rows:22vh 18vh 1fr}
+.header{height:3vh;padding:.65vh .65vw .5vh;border-bottom:1px solid var(--line);color:var(--amber);font-size:1.15vh;letter-spacing:.12em;display:flex;justify-content:space-between;align-items:center;background:rgba(0,0,0,.24)}
+.header em{font-style:normal;color:var(--dim);font-size:.9vh}
+.profile-body{display:grid;grid-template-columns:42% 1fr;gap:.7vw;padding:.9vh .65vw}
+.portrait{border:1px solid var(--line);position:relative;min-height:16vh;overflow:hidden;background:linear-gradient(135deg,transparent 42%,rgba(84,242,143,.07) 42%,rgba(84,242,143,.07) 46%,transparent 46%),radial-gradient(circle at 50% 28%,rgba(108,250,164,.34) 0 11%,transparent 11.5%),radial-gradient(ellipse at 50% 68%,rgba(108,250,164,.26) 0 25%,transparent 25.5%),#020806}
+.portrait:before{content:"PHOTO REDACTED";position:absolute;bottom:5px;left:6px;color:var(--red);font-size:.8vh;letter-spacing:.12em;animation:blink 1.1s steps(1) infinite}
+.portrait:after{content:"";position:absolute;left:0;right:0;height:2px;background:var(--green);box-shadow:0 0 8px var(--green);animation:portraitScan 3.5s linear infinite}
+@keyframes portraitScan{0%{top:4%}100%{top:96%}}
+@keyframes blink{50%{opacity:.18}}
+.kv{font-size:1.02vh;line-height:1.55}
+.kv div{display:flex;justify-content:space-between;border-bottom:1px dotted rgba(87,197,125,.18)}
+.kv span{color:var(--dim)}
+.kv b{color:#b7ffd0;font-weight:normal}
+.threat{color:var(--red)!important;text-shadow:0 0 9px rgba(255,75,75,.4)}
+.meter{margin:.65vh .65vw 0}
+.meter-label{display:flex;justify-content:space-between;font-size:.85vh;color:var(--dim)}
+.bar{height:.72vh;margin-top:.35vh;border:1px solid var(--line);padding:1px}
+.bar i{display:block;height:100%;width:72%;background:repeating-linear-gradient(90deg,var(--amber) 0 8px,transparent 8px 11px);animation:barPulse 2.6s ease-in-out infinite}
+@keyframes barPulse{50%{opacity:.45;width:66%}}
+.objectives,.intel{padding:.8vh .65vw;font-size:1.02vh}
+.obj,.intel-item{display:grid;grid-template-columns:2.1em 1fr;gap:.35em;padding:.48vh 0;border-bottom:1px solid rgba(72,160,105,.14)}
+.obj b,.intel-item b{color:var(--amber)}
+.obj span,.intel-item span{color:#aaf6c6}
+.obj em{font-style:normal;color:var(--cyan)}
+.cipher{padding:.75vh .65vw;font-size:.9vh;line-height:1.45;color:#66a680}
+.cipher b{color:var(--cyan);font-weight:normal}
+.cipher .stream{white-space:pre-wrap;opacity:.82}
+.map{position:relative;min-width:0;background:linear-gradient(rgba(30,91,62,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(30,91,62,.12) 1px,transparent 1px),radial-gradient(circle at 52% 47%,rgba(31,99,65,.2),transparent 55%),#020906;background-size:3.4vw 3.4vw,3.4vw 3.4vw,auto,auto}
+.map-title{position:absolute;left:1vw;top:1vh;z-index:5;color:var(--amber);font-size:1.15vh;letter-spacing:.16em}
+.map-sub{display:block;color:var(--dim);font-size:.85vh;margin-top:.35vh}
+.map svg{position:absolute;inset:4.2vh .7vw .7vh;width:calc(100% - 1.4vw);height:calc(100% - 4.9vh)}
+.city-ring{fill:none;stroke:rgba(118,238,164,.38);stroke-width:1.2}.road{fill:none;stroke:rgba(87,197,125,.3);stroke-width:.8}.river{fill:none;stroke:rgba(102,206,222,.58);stroke-width:2.1}.route{fill:none;stroke:var(--amber);stroke-width:1.25;stroke-dasharray:7 7;animation:dash 7s linear infinite}
+@keyframes dash{to{stroke-dashoffset:-140}}
+.sector{fill:rgba(76,207,126,.03);stroke:rgba(76,207,126,.18);stroke-width:.6}
+.node circle.core{fill:#020806;stroke:var(--green);stroke-width:1.2}.node circle.pulse{fill:none;stroke:var(--green);stroke-width:1;transform-box:fill-box;transform-origin:center;animation:pulse 2.2s ease-out infinite}.node.hot circle.core{stroke:var(--red)}.node.hot circle.pulse{stroke:var(--red)}.node text{fill:#aaf6c6;font-size:10px;letter-spacing:1px}.node .num{fill:var(--amber);font-size:9px}
+@keyframes pulse{0%{transform:scale(.7);opacity:.9}100%{transform:scale(2.5);opacity:0}}
+.crosshair{position:absolute;width:7vw;height:7vw;left:48%;top:46%;transform:translate(-50%,-50%);border:1px solid rgba(255,182,77,.3);border-radius:50%;animation:spin 15s linear infinite}
+.crosshair:before,.crosshair:after{content:"";position:absolute;background:rgba(255,182,77,.35)}
+.crosshair:before{left:50%;top:-12%;bottom:-12%;width:1px}.crosshair:after{top:50%;left:-12%;right:-12%;height:1px}
+@keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg)}}
+.radar{position:absolute;right:1vw;top:1vh;width:9vw;height:9vw;border:1px solid rgba(107,217,232,.25);border-radius:50%;overflow:hidden;background:repeating-radial-gradient(circle,transparent 0 18%,rgba(107,217,232,.12) 18.5% 19%,transparent 19.5% 36%)}
+.radar:before{content:"";position:absolute;inset:0;background:conic-gradient(from 0deg,rgba(107,217,232,.45),transparent 18%);animation:spin2 4s linear infinite}
+.radar:after{content:"";position:absolute;left:50%;top:50%;width:3px;height:3px;border-radius:50%;background:var(--red);box-shadow:-22px 10px 0 var(--amber),15px -26px 0 var(--green)}
+@keyframes spin2{to{transform:rotate(360deg)}}
+.coordinates{position:absolute;left:1vw;bottom:1vh;font-size:.82vh;line-height:1.45;color:var(--dim)}
+.site-detail{position:absolute;right:1vw;bottom:1vh;width:18vw;padding:.75vh .7vw;border:1px solid var(--line);background:rgba(1,7,4,.86);font-size:.85vh;line-height:1.35;z-index:7}
+.site-detail b{display:block;color:var(--amber);font-size:1.1vh;letter-spacing:.12em}.site-detail span{color:#aaf6c6}.site-detail small{display:block;color:var(--dim);margin-top:.4vh}
+.wave-wrap{padding:.65vh .6vw}canvas{width:100%;height:12vh;display:block;border:1px solid rgba(107,217,232,.14);background:#010705}.signal-meta{display:flex;justify-content:space-between;margin-top:.55vh;font-size:.82vh;color:var(--dim)}.signal-meta b{color:var(--cyan);font-weight:normal}
+.log{padding:.65vh .6vw;font-size:.9vh;line-height:1.47;overflow:hidden}.log-line{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.log-line time{color:var(--dim)}.log-line b{color:var(--amber);font-weight:normal}.log-line.alert b{color:var(--red)}
+.packet{padding:.65vh .6vw;font-size:.85vh;line-height:1.45;position:relative}.packet-grid{display:grid;grid-template-columns:repeat(8,1fr);gap:3px;margin:.55vh 0}.packet-grid i{height:1vh;border:1px solid rgba(88,180,119,.18);background:rgba(56,144,92,.12);animation:packet 3s steps(1) infinite}.packet-grid i:nth-child(3n){animation-delay:.4s}.packet-grid i:nth-child(4n){animation-delay:1.2s}.packet-grid i:nth-child(5n){animation-delay:2s}
+@keyframes packet{0%,72%,100%{background:rgba(56,144,92,.12)}73%,84%{background:var(--amber);box-shadow:0 0 7px var(--amber)}}
+.bottom{display:grid;grid-template-columns:1.25fr repeat(4,1fr) 1.1fr;gap:.55vw;min-height:0}
+.boot{padding:.75vh .65vw;font-size:.84vh;line-height:1.42}.boot strong{display:block;color:var(--amber);font-size:1.08vh;letter-spacing:.1em;margin-bottom:.45vh}.boot .cursor:after{content:"█";animation:blink .75s steps(1) infinite;color:var(--green)}
+.site-card{padding:.65vh .55vw;cursor:pointer;transition:.15s}.site-card:hover,.site-card.active{border-color:rgba(255,182,77,.58);background:linear-gradient(180deg,rgba(41,39,15,.62),rgba(2,10,7,.94))}.site-card .n{color:var(--amber);font-size:1.05vh}.site-card b{display:block;margin:.3vh 0;font-size:1.02vh;color:#b7ffd0;letter-spacing:.07em}.site-card small{display:block;color:var(--dim);font-size:.78vh;line-height:1.35}.site-card .status{margin-top:.65vh;font-size:.75vh;color:var(--cyan)}
+.auth{padding:.7vh .6vw;font-size:.82vh}.auth strong{display:block;color:var(--red);font-size:1vh;letter-spacing:.1em}.auth-code{font-size:1.25vh;color:var(--amber);margin:.5vh 0;letter-spacing:.16em}.auth small{color:var(--dim);line-height:1.35}
+.noise{position:absolute;inset:0;pointer-events:none;z-index:34;opacity:.035;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.75'/%3E%3C/svg%3E");animation:noise .18s steps(2) infinite}
+@keyframes noise{0%{transform:translate(0)}25%{transform:translate(-1%,1%)}50%{transform:translate(1%,-1%)}75%{transform:translate(.5%,1%)}}
+.flash{position:absolute;inset:0;background:rgba(154,255,190,.12);z-index:50;pointer-events:none;opacity:0;animation:flash 13s steps(1) infinite}
+@keyframes flash{0%,92%,94%,100%{opacity:0}93%{opacity:.15}}
+@media (max-width:900px){#app{grid-template-rows:7vh 1fr 20vh}.main{grid-template-columns:20vw 1fr 20vw}.classified,.clock span{display:none}}
+
+/* ==========================================================================\n   RESPONSIVE DESKTOP OVERRIDES\n   Keeps the terminal usable from 1024×768 through ultrawide monitors.\n   ========================================================================== */
+html,body{width:100%;height:100%;}
+#app{width:100%;height:100dvh;min-height:620px;}
+#app:after{inset:0;}
+.main{grid-template-columns:clamp(260px,22vw,380px) minmax(430px,1fr) clamp(260px,22vw,380px);}
+.left{grid-template-rows:24vh 19vh minmax(0,1fr);}
+.right{grid-template-rows:22vh 18vh minmax(0,1fr);}
+.header{font-size:clamp(9px,.95vh,12px);}
+.header em{font-size:clamp(8px,.72vh,10px);}
+.kv,.objectives,.intel{font-size:clamp(9px,.86vh,11px);}
+.kv{line-height:1.42;}
+.profile-body{padding:clamp(5px,.75vh,10px) clamp(6px,.55vw,11px);}
+.objectives,.intel{height:calc(100% - 3vh);overflow-y:auto;scrollbar-width:thin;scrollbar-color:var(--dim) transparent;}
+.objectives::-webkit-scrollbar,.intel::-webkit-scrollbar{width:4px;}
+.objectives::-webkit-scrollbar-thumb,.intel::-webkit-scrollbar-thumb{background:var(--dim);}
+.obj,.intel-item{padding:clamp(3px,.34vh,5px) 0;line-height:1.27;}
+.cipher,.log,.packet{font-size:clamp(8px,.76vh,10px);}
+.site-card b{font-size:clamp(9px,.85vh,11px);}
+.site-card small,.site-card .status,.auth,.boot{font-size:clamp(7px,.68vh,9px);}
+.map-title{font-size:clamp(9px,.92vh,12px);}
+.map-sub{font-size:clamp(7px,.68vh,9px);}
+.site-detail{width:clamp(190px,18vw,300px);font-size:clamp(8px,.72vh,10px);}
+.site-detail b{font-size:clamp(9px,.9vh,12px);}
+
+@media (max-height:760px){
+  #app{grid-template-rows:48px minmax(480px,1fr) 126px;gap:7px;padding:8px 12px;}
+  .left{grid-template-rows:170px 140px minmax(0,1fr);gap:6px;}
+  .right{grid-template-rows:155px 132px minmax(0,1fr);gap:6px;}
+  .header{height:24px;padding:5px 7px 4px;}
+  .objectives,.intel{height:calc(100% - 24px);}
+  .portrait{min-height:112px;}
+  canvas{height:82px;}
+  .radar{width:78px;height:78px;}
+  .title strong{font-size:16px;}
+  .title small{font-size:8px;}
+  .clock b{font-size:12px;}
+}
+
+@media (max-width:1120px){
+  body{overflow:auto;}
+  #app{min-width:1024px;}
+  .main{grid-template-columns:250px minmax(460px,1fr) 250px;}
+  .classified{display:none;}
+  .topbar{grid-template-columns:.6fr 2.5fr 1fr;}
+}
+
+@media (min-width:2200px){
+  #app{max-width:2200px;margin:0 auto;}
+  body{background:#000;}
+}
+
+</style>
+</head>
+<body>
+<!--
+================================================================================
+EDIT THIS BLOCK FIRST
+You can change names, intel text, date, and map site descriptions below.
+Everything in the dashboard pulls from DASHBOARD_CONFIG.
+================================================================================
+-->
+<script>
+const DASHBOARD_CONFIG = {
+  startDate: "1997-08-20T21:14:33",
+  timezoneLabel: "MSK",
+  operationTitle: "OPERATION: BORISLOV CONNECTION",
+  operationSubtitle: "FIELD INTELLIGENCE TERMINAL // MOSCOW STATION",
+  subject: {
+    designation: "B-17",
+    identity: "Evan Bearclaw / Ivan Borislov",
+    status: "IN KREMLIN CUSTODY?",
+    lastSignal: "SHEREMETYEVO ARRIVAL / LOST INSIDE KREMLIN",
+    holdingAuthority: "UNCONFIRMED",
+    exposure: "COMPARTMENTED",
+    confidence: 78
+  },
+  objectives: [
+    { code:"01", text:"Locate B-17 inside the Kremlin complex", status:"ACTIVE" },
+    { code:"02", text:"Track G-1 safe house and movement pattern", status:"ACTIVE" },
+    { code:"03", text:"Identify requested museum artifact", status:"PENDING" },
+    { code:"04", text:"Prepare recovery or extraction route", status:"LOCKED" }
+  ],
+  intel: [
+    "Evan Bearclaw, aka Ivan Borislov, aka Bori Ivanov, aka Bori Baklava, aka B-17, was seen arriving at Sheremetyevo Airport and entering the Kremlin complex.",
+    "A large spike in guards and internal security patrols has been observed at the Kremlin since B-17 entered the compound.",
+    "The man accompanying B-17 has been identified as Gribanov Denisovich, codename G-1. He has since left the Kremlin and is believed to be operating from a safe house at 14 Staromonetny Lane.",
+    "A request has been sent out from the Kremlin for a specific artifact currently believed to be held by the Pushkin Museum.",
+    "Diplomatic pouch traffic between the Kremlin and a military airfield increased overnight, suggesting a rapid transfer window may be opening within 24 hours."
+  ],
+  commandLines: [
+    "C:\\STATION\\OPS> LOAD BORISLOV.DAT",
+    "VERIFYING FIELD KEYS... OK",
+    "DECRYPTING SITE INDEX... OK",
+    "IMPORTING AIRPORT SURVEILLANCE... OK"
+  ],
+  sites: [
+    {
+      id: 0,
+      label: "SITE 01",
+      name: "KREMLIN SECTOR",
+      status: "WATCHED",
+      title: "01 // KREMLIN SECTOR",
+      text: "B-17 was seen entering the Kremlin. Guard presence has increased sharply since arrival, with roving internal patrols and restricted gate movement.",
+      meta: "CONFIDENCE 84% // ACCESS: DENIED // HIGH PRIORITY",
+      x: 398,
+      y: 270
+    },
+    {
+      id: 1,
+      label: "SITE 02",
+      name: "PUSHKIN MUSEUM",
+      status: "UNVERIFIED",
+      title: "02 // PUSHKIN MUSEUM",
+      text: "Artifact request likely originated here or targets an item housed here. Archive staff movement increased after midnight.",
+      meta: "CONFIDENCE 66% // ACCESS: PUBLIC FRONT / RESTRICTED STORAGE",
+      x: 548,
+      y: 178
+    },
+    {
+      id: 2,
+      label: "SITE 03",
+      name: "SHEREMETYEVO ARRIVAL",
+      status: "CONFIRMED",
+      title: "03 // SHEREMETYEVO ARRIVAL",
+      text: "Airport surveillance confirms B-17 and G-1 arriving together before moving into the city under light escort.",
+      meta: "CONFIDENCE 91% // INITIAL SIGHTING CONFIRMED",
+      x: 260,
+      y: 322
+    },
+    {
+      id: 3,
+      label: "SITE 04",
+      name: "G-1 SAFE HOUSE",
+      status: "ACTIVE",
+      title: "04 // G-1 SAFE HOUSE",
+      text: "Gribanov Denisovich, codename G-1, is believed to be staying at 14 Staromonetny Lane. Low-profile vehicle rotations suggest an active safe house.",
+      meta: "CONFIDENCE 73% // SURVEILLANCE ADVISED // ACTIONABLE",
+      x: 522,
+      y: 408
+    }
+  ],
+  trafficFeed: [
+    ["NET","SHEREMETYEVO VISUAL CONFIRMATION LOGGED",false],
+    ["OPS","B-17 TRACK LOST AT KREMLIN ENTRY POINT",false],
+    ["WARN","KREMLIN GUARD PRESENCE INCREASED",true],
+    ["SIG","PUSHKIN MUSEUM REQUEST TRAFFIC INTERCEPTED",false],
+    ["OPS","G-1 SAFE HOUSE PROBABLE AT 14 STAROMONETNY LANE",false],
+    ["WARN","DIPLOMATIC POUCH MOVEMENT INCREASED",true]
+  ],
+  interceptLines: [
+    "9C 43 D1 A7 22 5F 04 B0 7E 9A 6C E1",
+    "KEYSET: ГРАНИТ-4 / HANDSHAKE ACCEPTED",
+    "ROUTE: SHEREMETYEVO → KREMLIN → YAKIMANKA",
+    "CRC: 9F3A / PACKET LOSS 02.7%"
+  ]
+};
+</script>
+
+<div id="app" class="glitch">
+  <div class="scan"></div><div class="noise"></div><div class="flash"></div>
+  <header class="frame topbar">
+    <div class="classified">TOP SECRET // NIGHT OPS // NOFORN</div>
+    <div class="title">
+      <strong id="opTitle"></strong>
+      <small id="opSubtitle"></small>
+    </div>
+    <div class="clock"><b id="clock"></b><span>TERMINAL KESTREL-04 // LINK ENCRYPTED</span></div>
+  </header>
+
+  <section class="main">
+    <aside class="side left">
+      <section class="frame">
+        <div class="header">RECOVERY SUBJECT <em>FILE B-17 / RESTRICTED</em></div>
+        <div class="profile-body">
+          <div class="portrait"></div>
+          <div class="kv" id="subjectKv"></div>
+        </div>
+        <div class="meter">
+          <div class="meter-label"><span>IDENTITY CONFIDENCE</span><b id="confidenceVal"></b></div>
+          <div class="bar"><i id="confidenceBar"></i></div>
+        </div>
+      </section>
+
+      <section class="frame">
+        <div class="header">MISSION OBJECTIVES <em>PHASE 1 / DENIABLE</em></div>
+        <div class="objectives" id="objectives"></div>
+      </section>
+
+      <section class="frame">
+        <div class="header">INTELLIGENCE SUMMARY <em>EDITABLE</em></div>
+        <div class="intel" id="intel"></div>
+      </section>
+    </aside>
+
+    <main class="frame map">
+      <div class="map-title">TACTICAL SECTOR OVERVIEW // MOSCOW METRO
+        <span class="map-sub">SATELLITE COMPOSITE 03-C // CIVILIAN NETWORK OVERLAY // NOT TO SCALE</span>
+      </div>
+      <div class="radar"></div>
+      <div class="crosshair"></div>
+      <svg viewBox="0 0 760 560" aria-label="Stylized tactical map of Moscow">
+        <path class="river" d="M-30 420 C95 360 145 448 252 396 C338 354 381 300 470 318 C568 338 626 285 790 302"/>
+        <circle class="city-ring" cx="380" cy="285" r="220"/>
+        <circle class="city-ring" cx="380" cy="285" r="160"/>
+        <circle class="city-ring" cx="380" cy="285" r="94"/>
+        <circle class="city-ring" cx="380" cy="285" r="40"/>
+        <path class="road" d="M380 30V535M108 285H652M185 100L575 470M580 95L190 475"/>
+        <path class="road" d="M64 145C215 228 285 160 380 285S555 394 700 438"/>
+        <path class="road" d="M102 455C222 350 283 390 380 285S546 175 680 136"/>
+        <path class="sector" d="M380 285 L380 65 A220 220 0 0 1 535 130 Z"/>
+        <path class="sector" d="M380 285 L535 130 A220 220 0 0 1 598 305 Z"/>
+        <path class="sector" d="M380 285 L598 305 A220 220 0 0 1 470 485 Z"/>
+        <path class="sector" d="M380 285 L470 485 A220 220 0 0 1 210 425 Z"/>
+        <path class="sector" d="M380 285 L210 425 A220 220 0 0 1 166 212 Z"/>
+        <path class="sector" d="M380 285 L166 212 A220 220 0 0 1 380 65 Z"/>
+        <path class="route" id="routeA" d="M260 322 C315 265 357 252 398 270 S491 230 548 178"/>
+        <path class="route" id="routeB" d="M398 270 C430 328 469 355 522 408"/>
+        <g id="mapNodes"></g>
+      </svg>
+      <div class="coordinates">CURSOR: 55°45'21"N 37°37'03"E<br>MAG VAR: +07.2° // DATUM: SK-42<br>GRID REF: 37U DB 4187 7962</div>
+      <div class="site-detail" id="siteDetail"></div>
+    </main>
+
+    <aside class="side right">
+      <section class="frame">
+        <div class="header">SIGNAL INTERCEPT <em>VHF / 143.625 MHz</em></div>
+        <div class="wave-wrap">
+          <canvas id="scope" width="600" height="180"></canvas>
+          <div class="signal-meta"><span>BEARING <b>071°</b></span><span>SNR <b>18.4 dB</b></span><span>MODE <b>BURST</b></span></div>
+        </div>
+      </section>
+
+      <section class="frame">
+        <div class="header">STATION TRAFFIC <em>LIVE / FILTERED</em></div>
+        <div class="log" id="log"></div>
+      </section>
+
+      <section class="frame">
+        <div class="header">CRYPTANALYSIS BUFFER <em>56K SECURE MODEM</em></div>
+        <div class="cipher"><b>INCOMING BURST / CHANNEL 9</b><div class="stream" id="cipher"></div></div>
+      </section>
+    </aside>
+  </section>
+
+  <footer class="bottom">
+    <section class="frame boot"><strong>KESTREL-04 // COMMAND LINE</strong><div id="terminal"></div></section>
+    <div id="siteCards" style="display:contents"></div>
+    <section class="frame auth"><strong>AUTHORIZATION REQUIRED</strong><div class="auth-code">DELTA / GREEN</div><small>Recovery authority remains compartmented. Field decisions are deniable and non-attributable.</small></section>
+  </footer>
+</div>
+
+
+<script>
+const cfg = DASHBOARD_CONFIG;
+document.getElementById('opTitle').textContent = cfg.operationTitle;
+document.getElementById('opSubtitle').textContent = cfg.operationSubtitle;
+
+document.getElementById('subjectKv').innerHTML = `
+  <div><span>DESIGNATION</span><b>${cfg.subject.designation}</b></div>
+  <div><span>IDENTITY</span><b>${cfg.subject.identity}</b></div>
+  <div><span>STATUS</span><b class="threat">${cfg.subject.status}</b></div>
+  <div><span>LAST SIGNAL</span><b>${cfg.subject.lastSignal}</b></div>
+  <div><span>HOLDING AUTH.</span><b>${cfg.subject.holdingAuthority}</b></div>
+  <div><span>EXPOSURE</span><b>${cfg.subject.exposure}</b></div>`;
+
+document.getElementById('confidenceVal').textContent = cfg.subject.confidence + '%';
+document.getElementById('confidenceBar').style.width = cfg.subject.confidence + '%';
+
+document.getElementById('objectives').innerHTML = cfg.objectives.map(o =>
+  `<div class="obj"><b>${o.code}</b><span>${o.text}</span><em>${o.status}</em></div>`).join('');
+
+document.getElementById('intel').innerHTML = cfg.intel.map((line, i) =>
+  `<div class="intel-item"><b>${String(i+1).padStart(2,'0')}</b><span>${line}</span></div>`).join('');
+
+document.getElementById('terminal').innerHTML = cfg.commandLines.join('<br>') + '<br><span class="cursor"></span>';
+document.getElementById('cipher').textContent = cfg.interceptLines.join('\n');
+
+document.getElementById('siteCards').innerHTML = cfg.sites.map((s, i) =>
+  `<section class="frame site-card ${i===0?'active':''}" data-site="${s.id}">
+    <span class="n">${s.label}</span><b>${s.name}</b>
+    <small>${s.text}</small><div class="status">STATUS: ${s.status}</div>
+  </section>`).join('');
+
+document.getElementById('mapNodes').innerHTML = cfg.sites.map((s, i) => `
+  <g class="node ${i===0?'hot':''}" data-site="${s.id}" transform="translate(${s.x} ${s.y})">
+    <circle class="pulse" r="${i===0?10:9}"/><circle class="core" r="${i===0?6:5}"/>
+    <text class="num" x="${s.id===2?-95:10}" y="-9">0${s.id+1}</text>
+    <text x="${s.id===2?-95:10}" y="6">${s.name}</text>
+  </g>`).join('');
+
+function selectSite(i){
+  document.querySelectorAll('.site-card').forEach((el,n)=>el.classList.toggle('active', n===i));
+  document.querySelectorAll('.node').forEach((el,n)=>el.classList.toggle('hot', n===i));
+  const s = cfg.sites[i];
+  document.getElementById('siteDetail').innerHTML = `<b>${s.title}</b><span>${s.text}</span><small>${s.meta}</small>`;
+}
+selectSite(0);
+
+document.querySelectorAll('[data-site]').forEach(el=>{
+  el.addEventListener('click', ()=>selectSite(Number(el.dataset.site)));
+});
+document.addEventListener('keydown', e=>{
+  if(['1','2','3','4'].includes(e.key)) selectSite(Number(e.key)-1);
+});
+
+let sim = new Date(cfg.startDate);
+function updateClock(){
+  const mon=["JAN","FEB","MAR","APR","MAY","JUN","JUL","AUG","SEP","OCT","NOV","DEC"][sim.getMonth()];
+  const pad=n=>String(n).padStart(2,'0');
+  document.getElementById('clock').textContent = `${pad(sim.getDate())} ${mon} ${sim.getFullYear()} ${pad(sim.getHours())}:${pad(sim.getMinutes())}:${pad(sim.getSeconds())} ${cfg.timezoneLabel}`;
+}
+updateClock();
+setInterval(()=>{ sim.setSeconds(sim.getSeconds()+1); updateClock(); }, 1000);
+
+const scope=document.getElementById('scope'), ctx=scope.getContext('2d');
+let phase=0;
+function drawScope(){
+  const w=scope.width,h=scope.height;
+  ctx.fillStyle='#010705';ctx.fillRect(0,0,w,h);
+  ctx.strokeStyle='rgba(54,134,91,.25)';ctx.lineWidth=1;
+  for(let x=0;x<w;x+=50){ctx.beginPath();ctx.moveTo(x,0);ctx.lineTo(x,h);ctx.stroke()}
+  for(let y=0;y<h;y+=30){ctx.beginPath();ctx.moveTo(0,y);ctx.lineTo(w,y);ctx.stroke()}
+  ctx.beginPath();
+  for(let x=0;x<w;x++){
+    const burst=(x>250&&x<330)?Math.sin(x*.9+phase)*22:0;
+    const y=h/2 + Math.sin(x*.045+phase)*10 + Math.sin(x*.19+phase*1.5)*3 + burst;
+    if(x===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+  }
+  ctx.strokeStyle='#70e5dc';ctx.lineWidth=2;ctx.shadowColor='#70e5dc';ctx.shadowBlur=8;ctx.stroke();ctx.shadowBlur=0;
+  phase+=.08;requestAnimationFrame(drawScope);
+}
+drawScope();
+
+let logIndex=0;
+const initial = cfg.trafficFeed.slice(0,5);
+document.getElementById('log').innerHTML = initial.map(([tag,msg,alert], idx)=>
+  `<div class="log-line${alert?' alert':''}"><time>21:1${idx}:0${idx}</time> <b>${tag}</b> ${msg}</div>`).join('');
+
+setInterval(()=>{
+  const pad=n=>String(n).padStart(2,'0');
+  const [tag,msg,alert]=cfg.trafficFeed[logIndex++%cfg.trafficFeed.length];
+  const div=document.createElement('div');
+  div.className='log-line'+(alert?' alert':'');
+  div.innerHTML=`<time>${pad(sim.getHours())}:${pad(sim.getMinutes())}:${pad(sim.getSeconds())}</time> <b>${tag}</b> ${msg}`;
+  const log=document.getElementById('log'); log.appendChild(div);
+  while(log.children.length>7) log.removeChild(log.firstChild);
+}, 2600);
+
+const hex='0123456789ABCDEF';
+setInterval(()=>{
+  if(Math.random()<.55){
+    let s='';
+    for(let i=0;i<16;i++) s += hex[Math.floor(Math.random()*16)] + hex[Math.floor(Math.random()*16)] + (i===7?'\n':' ');
+    document.getElementById('cipher').textContent = s + '\n' + cfg.interceptLines.slice(1).join('\n');
+  }
+}, 2100);
+
+setInterval(()=>{
+  const i = Math.floor((Date.now()/6000)%cfg.sites.length);
+  selectSite(i);
+}, 6000);
+</script>
+</body>
+</html>

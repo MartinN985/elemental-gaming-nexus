@@ -14,7 +14,8 @@ const entries = [
   "_redirects",
   "assets",
   "shows",
-  "listen"
+  "listen",
+  "borislov"
 ];
 
 await rm(dist, { recursive: true, force: true });
