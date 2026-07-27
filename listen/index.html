@@ -3,18 +3,19 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>That’s Redacted | Elemental Gaming Nexus</title>
-  <meta name="description" content="That’s Redacted is a Delta Green actual-play podcast from Elemental Gaming Nexus. Listen to the complete episode archive.">
+  <title>Listen to That’s Redacted | Elemental Gaming Nexus</title>
+  <meta name="description" content="Listen to That’s Redacted on Spotify, Apple Podcasts, Amazon Music, Spreaker, or through the embedded episode archive.">
   <meta name="theme-color" content="#070a09">
   <link rel="icon" type="image/png" href="/assets/images/favicon.png">
-  <meta property="og:title" content="That’s Redacted">
+  <meta property="og:title" content="Listen to That’s Redacted">
   <meta property="og:description" content="A Delta Green actual-play podcast from Elemental Gaming Nexus.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://www.elementalgamingnexus.com/shows/thats-redacted/">
+  <meta property="og:url" content="https://www.elementalgamingnexus.com/listen/">
   <meta property="og:image" content="https://www.elementalgamingnexus.com/assets/images/thats-redacted-cover.png">
   <meta name="twitter:card" content="summary_large_image">
-  <link rel="canonical" href="https://www.elementalgamingnexus.com/shows/thats-redacted/">
+  <link rel="canonical" href="https://www.elementalgamingnexus.com/listen/">
   <link rel="stylesheet" href="/assets/css/style.css?v=banner-lock">
+  <link rel="stylesheet" href="/assets/css/listen.css?v=1">
   <script defer src="/assets/js/site.js"></script>
 </head>
 <body>
@@ -41,7 +42,7 @@
       </button>
       <nav class="nav-links" id="site-navigation" aria-label="Primary navigation" data-menu data-open="false">
         <a href="/#shows">Shows</a>
-        <a href="/listen/">Listen</a>
+        <a href="/listen/" aria-current="page">Listen</a>
         <a href="/#network">About</a>
         <a class="nav-cta" href="mailto:dakota@elementalgamingnexus.com">Contact</a>
       </nav>
@@ -50,57 +51,84 @@
 </header>
 
   <main id="main">
-    <section class="page-hero">
-      <div class="wrap page-hero-grid">
-        <div>
-          <div class="eyebrow">Case file // active</div>
-          <h1>That’s Redacted</h1>
-          <p class="lede">A Delta Green actual-play podcast.</p>
-          <div class="actions">
-            <a class="button button-primary" href="/listen/">Listen now</a>
-            <a class="button button-arrow" href="https://www.spreaker.com/podcast/that-s-redacted--6648144" target="_blank" rel="noopener">Follow on Spreaker</a>
-          </div>
-          <dl class="case-line">
-            <dt>Network</dt>
-            <dd>Elemental Gaming Nexus</dd>
-            <dt>Status</dt>
-            <dd>Ongoing transmission</dd>
-          </dl>
-        </div>
-        <figure class="hero-art">
+    <section class="listen-hero">
+      <div class="wrap listen-hero-grid">
+        <figure class="listen-cover-wrap">
           <picture>
             <source srcset="/assets/images/thats-redacted-cover.webp" type="image/webp">
-            <img src="/assets/images/thats-redacted-cover.png" width="510" height="510" alt="That’s Redacted podcast cover">
+            <img class="listen-cover" src="/assets/images/thats-redacted-cover.png" width="510" height="510" alt="That’s Redacted podcast cover">
           </picture>
-          <figcaption class="art-caption">
-            <span>Program</span>
-            <span>That’s Redacted</span>
-          </figcaption>
         </figure>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="wrap briefing-grid">
         <div>
-          <div class="section-label">Briefing</div>
-          <h2 class="section-title">Every case leaves a record.</h2>
-        </div>
-        <div class="briefing-copy">
-          <p>Government agencies investigate the impossible.</p>
-          <p>Disappearances. Conspiracies. Ancient horrors.</p>
-          <p>Join a team of agents as routine assignments spiral into encounters with the Unnatural.</p>
+          <div class="eyebrow">Listen to the show</div>
+          <h1>That’s Redacted</h1>
+          <p class="lede">A Delta Green actual-play podcast from Elemental Gaming Nexus.</p>
+          <div class="actions">
+            <a class="button button-primary" href="#episodes">Play episodes</a>
+            <a class="button" href="/shows/thats-redacted/">About the show</a>
+          </div>
+          <div class="listen-note">Choose your podcast app below</div>
         </div>
       </div>
     </section>
 
-    <section class="section transmission" id="episodes">
+    <section class="section" aria-labelledby="platform-heading">
       <div class="wrap">
         <header class="section-header">
-          <div class="section-label">Archive access</div>
+          <div class="section-label">Where to listen</div>
           <div>
-            <h2 class="section-title">Episodes</h2>
-            <p class="section-intro">Start at the beginning or continue with the latest available investigation.</p>
+            <h2 class="section-title" id="platform-heading">Pick your platform.</h2>
+            <p class="section-intro">Follow the show in the app you already use.</p>
+          </div>
+        </header>
+
+        <div class="platform-grid">
+          <a class="platform-card" href="https://open.spotify.com/show/4EiM28R5nqGQdYWqktN2Vw" target="_blank" rel="noopener">
+            <span class="platform-mark" aria-hidden="true">SP</span>
+            <span>
+              <strong>Spotify</strong>
+              <small>Listen and follow</small>
+            </span>
+            <span class="platform-arrow" aria-hidden="true">↗</span>
+          </a>
+
+          <a class="platform-card" href="https://podcasts.apple.com/us/podcast/thats-redacted/id1820058519" target="_blank" rel="noopener">
+            <span class="platform-mark" aria-hidden="true">AP</span>
+            <span>
+              <strong>Apple Podcasts</strong>
+              <small>Listen, follow, and rate</small>
+            </span>
+            <span class="platform-arrow" aria-hidden="true">↗</span>
+          </a>
+
+          <a class="platform-card" href="https://music.amazon.com/podcasts/d8a7250c-c1a2-4904-906b-99a1045b21b6/that%27s-redacted" target="_blank" rel="noopener">
+            <span class="platform-mark" aria-hidden="true">AM</span>
+            <span>
+              <strong>Amazon Music</strong>
+              <small>Open the podcast</small>
+            </span>
+            <span class="platform-arrow" aria-hidden="true">↗</span>
+          </a>
+
+          <a class="platform-card" href="https://www.spreaker.com/podcast/that-s-redacted--6648144" target="_blank" rel="noopener">
+            <span class="platform-mark" aria-hidden="true">SR</span>
+            <span>
+              <strong>Spreaker</strong>
+              <small>Full show archive</small>
+            </span>
+            <span class="platform-arrow" aria-hidden="true">↗</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section listen-player" id="episodes">
+      <div class="wrap">
+        <header class="section-header">
+          <div class="section-label">Episode archive</div>
+          <div>
+            <h2 class="section-title">Listen here.</h2>
+            <p class="section-intro">Browse the current That’s Redacted archive without leaving the site.</p>
           </div>
         </header>
 
@@ -127,23 +155,18 @@
             </span>
           </a>
         </div>
-
-        <div class="listen-strip">
-          <span>The player is provided by Spreaker and includes the current show archive.</span>
-          <a class="button button-arrow" href="https://www.spreaker.com/podcast/that-s-redacted--6648144" target="_blank" rel="noopener">Open Spreaker</a>
-        </div>
       </div>
     </section>
 
-    <section class="section" id="contact">
+    <section class="section">
       <div class="wrap">
-        <div class="contact-panel">
+        <div class="support-panel">
           <div>
-            <div class="section-label">Contact</div>
-            <h2>Send a report.</h2>
-            <p>Questions, feedback, or business inquiries.</p>
+            <div class="section-label">Support the show</div>
+            <h2>Help us keep playing.</h2>
+            <p>Support Elemental Gaming Nexus on Ko-fi and help cover production costs for the podcast.</p>
           </div>
-          <a class="email-link" href="mailto:dakota@elementalgamingnexus.com">dakota@elementalgamingnexus.com</a>
+          <a class="button button-primary button-arrow" href="https://ko-fi.com/elementalgamingnexus" target="_blank" rel="noopener">Support on Ko-fi</a>
         </div>
       </div>
     </section>

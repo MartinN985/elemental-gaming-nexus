@@ -7,6 +7,8 @@ This version contains the public network website only. It intentionally does **n
 ## Pages
 
 - `/` — network homepage
+- `/listen/` — listening hub (Spotify, Apple, Amazon, Spreaker, Ko-fi)
+- `/go` — short redirect to `/listen/`
 - `/shows/thats-redacted/` — That’s Redacted show page
 - `/404.html` — custom not-found page
 

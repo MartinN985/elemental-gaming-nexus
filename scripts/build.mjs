@@ -11,8 +11,10 @@ const entries = [
   "robots.txt",
   "sitemap.xml",
   "_headers",
+  "_redirects",
   "assets",
-  "shows"
+  "shows",
+  "listen"
 ];
 
 await rm(dist, { recursive: true, force: true });
