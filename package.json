@@ -1,0 +1,14 @@
+{
+  "name": "elemental-gaming-nexus",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static public website for Elemental Gaming Nexus",
+  "scripts": {
+    "preview": "npx serve .",
+    "deploy": "npx wrangler pages deploy . --project-name elemental-gaming-nexus"
+  },
+  "devDependencies": {
+    "serve": "^14.2.4",
+    "wrangler": "^4.0.0"
+  }
+}
