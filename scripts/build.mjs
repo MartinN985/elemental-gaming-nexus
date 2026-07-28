@@ -16,7 +16,8 @@ const entries = [
   "shows",
   "listen",
   "go",
-  "borislov"
+  "borislov",
+  "terminal"
 ];
 
 await rm(dist, { recursive: true, force: true });
@@ -25,5 +26,10 @@ await mkdir(dist, { recursive: true });
 for (const entry of entries) {
   await cp(path.join(root, entry), path.join(dist, entry), { recursive: true });
 }
+
+// Explicitly keep terminal/.nojekyll — some copy/glob tools skip dotfiles.
+const nojekyllSrc = path.join(root, "terminal", ".nojekyll");
+const nojekyllDest = path.join(dist, "terminal", ".nojekyll");
+await cp(nojekyllSrc, nojekyllDest);
 
 console.log("Built static site into dist/");

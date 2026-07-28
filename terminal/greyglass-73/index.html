@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
+  <meta name="color-scheme" content="dark">
+  <title>KESTREL Remote Access</title>
+  <link rel="stylesheet" href="../assets/terminal.css">
+</head>
+<body class="crt">
+  <div class="scan" aria-hidden="true"></div>
+  <div class="shell glitch">
+    <header>
+      <div class="class">TOP SECRET // NOFORN</div>
+      <h1><span id="system"></span><small id="agency"></small></h1>
+      <div class="clock" id="clock"></div>
+    </header>
+    <main>
+      <section class="panel command-panel">
+        <div class="panel-title">KESTREL-04 // REMOTE COMMAND SESSION</div>
+        <div class="terminal">
+          <div id="bootlog" class="bootlog" aria-live="polite"></div>
+          <div class="prompt">
+            <label id="promptLabel" for="accessInput"></label>
+            <div class="inputrow">
+              <span>C:\REMOTE&gt;</span>
+              <input id="accessInput" autocomplete="off" autocapitalize="none" spellcheck="false" aria-label="Handler access string">
+              <button id="submitBtn" type="button">EXECUTE</button>
+            </div>
+            <div class="meter">
+              <div class="meterhead"><span>TRACE EXPOSURE</span><b id="traceText">0%</b></div>
+              <div class="bar"><i id="traceBar"></i></div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="panel intel-panel">
+        <div class="panel-title">RECOVERED INTELLIGENCE BUFFER</div>
+        <div class="brief">
+          <div id="standby" class="standby">
+            <div>
+              <div class="spinner" aria-hidden="true"></div>
+              <strong>AWAITING AUTHORIZED ACCESS STRING</strong>
+              Enter the complete result phrase supplied by the Handler.<br>
+              Unauthorized combinations will be rejected.
+            </div>
+          </div>
+          <div id="result" class="result" aria-live="polite"></div>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <span>NODE <b id="node"></b> // 9600 BAUD FALLBACK</span>
+      <span>SESSION RECORDING DISABLED</span>
+    </footer>
+  </div>
+  <script src="data.js"></script>
+  <script src="../assets/terminal.js"></script>
+</body>
+</html>
