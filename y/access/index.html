@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Restricted Access Terminal</title>
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <link rel="stylesheet" href="/assets/css/yellow-sign-v3.css?v=2">
+  <script defer src="/assets/js/access-console.js?v=2"></script>
+</head>
+<body>
+  <main class="arg-shell">
+    <section class="arg-panel access-panel">
+      <a class="micro-return" href="/y/">RETURN TO INCIDENT</a>
+      <p class="arg-kicker">RESTRICTED ACCESS TERMINAL</p>
+      <h1 class="file-title">Enter access string</h1>
+      <p class="file-copy" data-access-status>Verifying encounter history.</p>
+
+      <section class="issued-panel" data-issued-panel hidden>
+        <h2>Issued access strings</h2>
+        <ul data-issued-codes></ul>
+      </section>
+
+      <form class="code-form" data-code-form hidden>
+        <label for="access-code">ACCESS STRING</label>
+        <div class="code-row">
+          <input id="access-code" name="code" autocomplete="off" autocapitalize="characters" spellcheck="false" maxlength="40" required data-code-input>
+          <button class="arg-button" type="submit">Submit</button>
+        </div>
+      </form>
+
+      <p class="arg-error" data-code-error aria-live="assertive"></p>
+      <section class="materials access-materials" data-access-files hidden>
+        <h2>Opened files</h2>
+        <ul class="materials-list" data-access-file-list></ul>
+      </section>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>ARG Administration</title>
+  <link rel="stylesheet" href="/assets/css/yellow-sign-v3.css?v=2">
+  <script defer src="/assets/js/admin-arg.js?v=2"></script>
+</head>
+<body>
+  <main class="arg-shell">
+    <section class="arg-panel">
+      <p class="arg-kicker">PRIVATE CONTROL PANEL</p>
+      <h1 class="file-title">Incursion statistics</h1>
+
+      <form class="code-form" data-admin-form>
+        <label for="admin-key">ADMIN KEY</label>
+        <div class="code-row">
+          <input id="admin-key" type="password" data-admin-key required>
+          <button class="arg-button" type="submit">Load</button>
+        </div>
+      </form>
+      <p class="arg-error" data-admin-error></p>
+
+      <section data-admin-results hidden>
+        <div class="counter-grid admin-counters">
+          <article class="counter-card"><span>UNIQUE BROWSERS</span><strong data-stat-visitors>0</strong></article>
+          <article class="counter-card"><span>GLOBAL CONFIRMED</span><strong data-stat-global>0</strong></article>
+          <article class="counter-card"><span>RAW SCANS</span><strong data-stat-raw>0</strong></article>
+          <article class="counter-card"><span>RIBBONS SEEN</span><strong data-stat-ribbons>0</strong></article>
+        </div>
+
+        <section class="admin-phase-panel">
+          <h2>Global phase control</h2>
+          <form data-phase-form>
+            <div class="admin-phase-row">
+              <select data-phase-select aria-label="Global phase override">
+                <option value="automatic">Automatic from count</option>
+                <option value="0">Phase 0 // Initial Detection</option>
+                <option value="1">Phase 1 // 25</option>
+                <option value="2">Phase 2 // 50</option>
+                <option value="3">Phase 3 // 100</option>
+                <option value="4">Phase 4 // 250</option>
+                <option value="5">Phase 5 // 500</option>
+                <option value="6">Phase 6 // 1000</option>
+                <option value="7">Phase 7 // 2500</option>
+              </select>
+              <button class="arg-button" type="submit">Apply</button>
+            </div>
+          </form>
+          <p class="admin-phase-note" data-phase-status>Loading phase state.</p>
+        </section>
+
+        <h2 class="table-title">Special ribbons</h2>
+        <div class="table-wrap">
+          <table class="stats-table">
+            <thead><tr><th>Ribbon</th><th>Browsers</th><th>Scans</th></tr></thead>
+            <tbody data-special-body></tbody>
+          </table>
+        </div>
+
+        <h2 class="table-title">Recent ribbon activity</h2>
+        <div class="table-wrap">
+          <table class="stats-table">
+            <thead><tr><th>Ribbon</th><th>Browsers</th><th>Scans</th><th>Last seen</th></tr></thead>
+            <tbody data-recent-body></tbody>
+          </table>
+        </div>
+      </section>
+    </section>
+  </main>
+</body>
+</html>

@@ -12,12 +12,14 @@ const entries = [
   "sitemap.xml",
   "_headers",
   "_redirects",
+  "_routes.json",
   "assets",
   "shows",
   "listen",
   "go",
   "borislov",
-  "terminal"
+  "terminal",
+  "y"
 ];
 
 await rm(dist, { recursive: true, force: true });

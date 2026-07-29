@@ -1,0 +1,10 @@
+{
+  "version": 1,
+  "include": [
+    "/i/*",
+    "/api/arg/*",
+    "/y/special/*",
+    "/y/file/*",
+    "/y/global/*"
+  ]
+}
