@@ -3,6 +3,12 @@
   "name": "elemental-gaming-nexus",
   "main": "src/worker.js",
   "compatibility_date": "2026-07-27",
+  "workers_dev": true,
+  "preview_urls": true,
+  "routes": [
+    { "pattern": "www.elementalgamingnexus.com", "custom_domain": true },
+    { "pattern": "elementalgamingnexus.com", "custom_domain": true }
+  ],
   "assets": {
     "directory": "./dist",
     "binding": "ASSETS",
