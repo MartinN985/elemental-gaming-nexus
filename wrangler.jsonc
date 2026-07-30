@@ -28,6 +28,7 @@
       "name": "elemental-gaming-nexus-preview",
       "workers_dev": true,
       "preview_urls": true,
+      "routes": [],
       "d1_databases": [
         {
           "binding": "ARG_DB",
