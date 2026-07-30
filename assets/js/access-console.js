@@ -5,7 +5,13 @@
     "restricted-vector": ["Restricted vector file", "/y/file/restricted-vector"],
     "two-moons": ["Astronomical evidence", "/y/file/two-moons"],
     "program": ["Recovered program", "/y/file/program"],
-    "carcosa": ["Welcome to Carcosa", "/y/file/carcosa"]
+    "carcosa": ["Welcome to Carcosa", "/y/file/carcosa"],
+    "observer-intake": ["Observer Intake File", "/y/file/observer-intake"],
+    "team-deployment": ["Initial Team Deployment Brief", "/y/file/team-deployment"],
+    "yukon-exposure": ["Yukon Exposure Report", "/y/file/yukon-exposure"],
+    "field-transmission": ["Recovered Field Transmission", "/y/file/field-transmission"],
+    "vector-appendix": ["Vector Analysis Appendix", "/y/file/vector-appendix"],
+    "static-protocols": ["Static Protocols", "/y/file/static-protocols"]
   };
 
   const renderFiles = (files) => {
@@ -27,8 +33,10 @@
 
   async function init() {
     const status = document.querySelector("[data-access-status]");
-    const panel = document.querySelector("[data-issued-panel]");
-    const codes = document.querySelector("[data-issued-codes]");
+    const personalPanel = document.querySelector("[data-issued-panel]");
+    const personalCodes = document.querySelector("[data-issued-codes]");
+    const globalPanel = document.querySelector("[data-global-panel]");
+    const globalSlots = document.querySelector("[data-global-slots]");
     const form = document.querySelector("[data-code-form]");
     const input = document.querySelector("[data-code-input]");
     const error = document.querySelector("[data-code-error]");
@@ -39,20 +47,39 @@
       if (!response.ok) throw new Error(data.error || "Unable to verify encounter history.");
 
       if (!data.accessConsoleUnlocked) {
-        status.textContent = `ACCESS DENIED // 5 DISTINCT INCURSIONS REQUIRED // CURRENT: ${data.personalCount}`;
+        status.textContent = `ACCESS DENIED // PERSONAL THRESHOLD 5 OR GLOBAL PHASE 25 REQUIRED // PERSONAL: ${data.personalCount}`;
         return;
       }
 
-      status.textContent = `ACCESS GRANTED // ${data.personalCount} DISTINCT INCURSIONS CONFIRMED`;
+      status.textContent = `ACCESS GRANTED // PERSONAL: ${data.personalCount} // GLOBAL: ${data.globalConfirmedCount}`;
       form.hidden = false;
-      panel.hidden = false;
-      codes.replaceChildren();
-      data.issuedCodes.forEach((record) => {
+
+      personalCodes.replaceChildren();
+      (data.issuedCodes || []).forEach((record) => {
         const li = document.createElement("li");
-        li.innerHTML = `<span>${record.threshold} INCURSIONS</span><strong>${record.code}</strong>`;
-        codes.append(li);
+        const label = document.createElement("span");
+        label.textContent = `${record.threshold} INCURSIONS`;
+        const code = document.createElement("strong");
+        code.textContent = record.code;
+        li.append(label, code);
+        personalCodes.append(li);
       });
-      renderFiles(data.unlockedFiles);
+      personalPanel.hidden = personalCodes.children.length === 0;
+
+      globalSlots.replaceChildren();
+      (data.globalCodeSlots || []).forEach((record) => {
+        const li = document.createElement("li");
+        const label = document.createElement("span");
+        label.textContent = `GLOBAL PHASE ${record.phase}`;
+        const received = document.createElement("strong");
+        received.textContent = "ACCESS STRING RECEIVED IN REPORT";
+        received.title = record.title;
+        li.append(label, received);
+        globalSlots.append(li);
+      });
+      globalPanel.hidden = globalSlots.children.length === 0;
+
+      renderFiles(data.unlockedFiles || []);
 
       form.addEventListener("submit", async (event) => {
         event.preventDefault();

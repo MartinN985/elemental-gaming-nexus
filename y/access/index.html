@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Restricted Access Terminal</title>
   <meta name="robots" content="noindex,nofollow,noarchive">
-  <link rel="stylesheet" href="/assets/css/yellow-sign-v3.css?v=2">
-  <script defer src="/assets/js/access-console.js?v=2"></script>
+  <link rel="stylesheet" href="/assets/css/yellow-sign-v3.css?v=6">
+  <script defer src="/assets/js/access-console.js?v=6"></script>
 </head>
 <body>
   <main class="arg-shell">
@@ -16,8 +16,13 @@
       <h1 class="file-title">Enter access string</h1>
       <p class="file-copy" data-access-status>Verifying encounter history.</p>
 
+      <section class="issued-panel" data-global-panel hidden>
+        <h2>Global transmission slots</h2>
+        <ul data-global-slots></ul>
+      </section>
+
       <section class="issued-panel" data-issued-panel hidden>
-        <h2>Issued access strings</h2>
+        <h2>Issued personal access strings</h2>
         <ul data-issued-codes></ul>
       </section>
 

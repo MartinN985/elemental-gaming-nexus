@@ -1,14 +1,20 @@
 import {
   EXTRA_CODES,
+  GLOBAL_CODES,
   MILESTONE_CODES,
   getCounts,
+  getEffectiveGlobalPhase,
   getVisitor,
   json,
   normalizeCode
 } from "../../_lib/arg.js";
 
-const CODE_MAP = new Map(
-  [...MILESTONE_CODES, ...EXTRA_CODES].map((item) => [normalizeCode(item.code), item])
+const PERSONAL_CODE_MAP = new Map(
+  [...MILESTONE_CODES, ...EXTRA_CODES].map((item) => [normalizeCode(item.code), { ...item, scope: "personal" }])
+);
+
+const GLOBAL_CODE_MAP = new Map(
+  GLOBAL_CODES.map((item) => [normalizeCode(item.code), { ...item, scope: "global" }])
 );
 
 export async function onRequestPost(context) {
@@ -23,12 +29,19 @@ export async function onRequestPost(context) {
   catch { return json({ error: "Invalid access request." }, 400); }
 
   const code = normalizeCode(body.code);
-  const record = CODE_MAP.get(code);
+  const record = PERSONAL_CODE_MAP.get(code) || GLOBAL_CODE_MAP.get(code);
   if (!record) return json({ error: "ACCESS STRING REJECTED" }, 404);
 
   const counts = await getCounts(db, visitor.id);
-  if (counts.personal < record.threshold) {
+  if (record.scope === "personal" && counts.personal < record.threshold) {
     return json({ error: `CORROBORATION THRESHOLD NOT MET // ${record.threshold} REQUIRED` }, 403);
+  }
+
+  if (record.scope === "global") {
+    const phase = await getEffectiveGlobalPhase(db, counts.global);
+    if (phase.id < record.phase) {
+      return json({ error: "TRANSMISSION NOT YET RECEIVED" }, 403);
+    }
   }
 
   await db.prepare(

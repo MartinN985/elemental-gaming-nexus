@@ -8,7 +8,7 @@ export const SPECIAL_REDIRECTS = new Map([
   [3, "/y/special/0003"],
   [4, "/y/special/0004"],
   [5, "/y/special/0005"],
-  [404, "/y/special/0404"],
+  [404, "/y/404/"],
   [616, "/y/616/"],
   [2500, "/y/special/2500"]
 ]);
@@ -24,13 +24,28 @@ export const EXTRA_CODES = [
   { threshold: 5, code: "THEPLAY", slug: "program", title: "Recovered program" }
 ];
 
+export const GLOBAL_CODES = [
+  { phase: 1, code: "OBSERVER", slug: "observer-intake", title: "Observer Intake File" },
+  { phase: 2, code: "EXPENDABLE", slug: "team-deployment", title: "Initial Team Deployment Brief" },
+  { phase: 3, code: "IMAGE", slug: "yukon-exposure", title: "Yukon Exposure Report" },
+  { phase: 4, code: "UNSTABLE", slug: "field-transmission", title: "Recovered Field Transmission" },
+  { phase: 5, code: "OBSERVATION", slug: "vector-appendix", title: "Vector Analysis Appendix" },
+  { phase: 7, code: "UNCONTAINED", slug: "static-protocols", title: "Static Protocols" }
+];
+
 export const FILE_REQUIREMENTS = {
   "warning": { type: "code", threshold: 5 },
   "lost-reel": { type: "code", threshold: 10 },
   "restricted-vector": { type: "code", threshold: 25 },
   "two-moons": { type: "code", threshold: 50 },
   "program": { type: "code", threshold: 5 },
-  "carcosa": { type: "count", threshold: 100 }
+  "carcosa": { type: "count", threshold: 100 },
+  "observer-intake": { type: "global-code", phase: 1 },
+  "team-deployment": { type: "global-code", phase: 2 },
+  "yukon-exposure": { type: "global-code", phase: 3 },
+  "field-transmission": { type: "global-code", phase: 4 },
+  "vector-appendix": { type: "global-code", phase: 5 },
+  "static-protocols": { type: "global-code", phase: 7 }
 };
 
 export const GLOBAL_PHASES = [
@@ -51,7 +66,7 @@ export const GLOBAL_PHASES = [
     status: "ACTIVE",
     vector: "UNKNOWN",
     bulletin: [
-      "MULTIPLE INDEPENDENT OBSERVERS CONFIRMED.",
+      "MULTIPLE INDEPENDENT OBSERVER REPORTS CONFIRMED.",
       "INCIDENT CLASSIFICATION UPDATED: ANOMALOUS SIGNAL EVENT."
     ],
     question: "WHAT COULD THIS BE REFERRING TO?",
@@ -127,15 +142,18 @@ export const GLOBAL_PHASES = [
   {
     id: 7,
     threshold: 2500,
-    name: "UNCONTAINED SPREAD",
-    status: "UNCONTAINED",
-    vector: "OBSERVATION",
+    name: "ATLANTA STATUS UPDATE",
+    status: "PASSIVE",
+    vector: "WEB-BASED",
     bulletin: [
-      "UNCONTAINED SPREAD.",
-      "LOCAL RESPONSE HAS FAILED.",
-      "ALL OBSERVERS MUST BE CONSIDERED POTENTIAL TRANSMISSION VECTORS."
+      "ACTIVE SPREAD: NOT DETECTED.",
+      "PASSIVE PROPAGATION: ONGOING.",
+      "WEB-BASED SPREAD: CONFIRMED.",
+      "ADDITIONAL RESPONSE TEAMS: DISPATCHED.",
+      "MONITORING CONTINUES.",
+      "ORGANIZATION STATUS: STRETCHED THIN."
     ],
-    question: "YOU ALREADY KNOW WHAT THIS REFERS TO.",
+    question: "WHAT COULD THIS BE REFERRING TO?",
     footer: "GLOBAL RISK LEVEL // HIGH"
   }
 ];
@@ -148,7 +166,7 @@ export const GLOBAL_FILES = [
   { slug: "vector-analysis", title: "Vector Analysis", phase: 5 },
   { slug: "network-propagation", title: "Network Propagation Report", phase: 6 },
   { slug: "containment-failure", title: "Containment Failure Notice", phase: 6 },
-  { slug: "static-protocols", title: "Static Protocols", phase: 7 }
+  { slug: "atlanta-status-update", title: "Atlanta Status Update", phase: 7 }
 ];
 
 export const htmlHeaders = {
@@ -301,7 +319,7 @@ export function pageShell({ title, eyebrow = "INCIDENT ARCHIVE", body, bodyClass
   <title>${escapeHtml(title)}</title>
   <meta name="robots" content="noindex, nofollow, noarchive">
   <meta name="theme-color" content="#d6b936">
-  <link rel="stylesheet" href="/assets/css/yellow-sign-v3.css?v=2">
+  <link rel="stylesheet" href="/assets/css/yellow-sign-v3.css?v=6">
 </head>
 <body class="${escapeHtml(bodyClass)}">
   <main class="arg-shell">

@@ -15,7 +15,7 @@ const FILES = {
     body: `
       <h1 class="file-title">Situation Report 01</h1>
       <div class="redaction-block">
-        <p>REPORTS ORIGINATE FROM UNCONNECTED OBSERVERS.</p>
+        <p>MULTIPLE INDEPENDENT <strong class="code-emphasis">OBSERVER</strong> REPORTS CONFIRMED.</p>
         <p>ALL SUBJECTS REPEAT THE SAME PHRASE:</p>
         <p class="report-emphasis">“HAVE YOU SEEN IT?”</p>
         <p>NO COMMON TRANSMISSION SOURCE HAS BEEN IDENTIFIED.</p>
@@ -28,7 +28,7 @@ const FILES = {
       <h1 class="file-title">Situation Report 02</h1>
       <div class="redaction-block">
         <p>WE BELIEVE THE INDIVIDUALS EXPOSED TO THE VECTOR MAY BECOME VECTORS THEMSELVES.</p>
-        <p>WE ARE SENDING IN AN EXPENDABLE TEAM.</p>
+        <p>WE ARE SENDING IN AN <strong class="code-emphasis">EXPENDABLE</strong> TEAM.</p>
       </div>`
   },
   "situation-report-03": {
@@ -90,16 +90,20 @@ const FILES = {
         <p>SUBJECTS MAY NOT RECOGNIZE THEIR OWN ROLE IN THE SPREAD.</p>
       </div>`
   },
-  "static-protocols": {
-    title: "Static Protocols",
+  "atlanta-status-update": {
+    title: "Atlanta Status Update",
     eyebrow: "GLOBAL FILE // 2500",
     body: `
-      <h1 class="file-title">Static Protocols</h1>
-      <div class="protocol-list terminal-blackout">
-        <p>ALL RECOVERED COPIES ARE MARKED FOR IMMEDIATE DESTRUCTION.</p>
-        <p>ALL CONFIRMED VECTORS ARE MARKED FOR REMOVAL.</p>
-        <p class="final-protocol">ALL INFECTED MUST GO.</p>
-      </div>`
+      <h1 class="file-title">Atlanta Incident Status Update</h1>
+      <dl class="case-grid status-grid">
+        <div><dt>ACTIVE SPREAD</dt><dd>Not detected</dd></div>
+        <div><dt>PASSIVE PROPAGATION</dt><dd>Ongoing</dd></div>
+        <div><dt>WEB-BASED SPREAD</dt><dd>Confirmed</dd></div>
+        <div><dt>ADDITIONAL RESPONSE TEAMS</dt><dd>Dispatched</dd></div>
+        <div><dt>MONITORING</dt><dd>Continues</dd></div>
+        <div><dt>ORGANIZATION STATUS</dt><dd>Stretched thin</dd></div>
+      </dl>
+      <p class="morse-footer" aria-label="encoded status">..- / -. / -.-. / --- / -. / - / .- / .. / -. / . / -..</p>`
   }
 };
 

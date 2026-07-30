@@ -1,32 +1,21 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "elemental-gaming-nexus",
-  "main": "src/worker.js",
   "compatibility_date": "2026-07-27",
+  "main": "src/worker.js",
   "assets": {
     "directory": "./dist",
     "binding": "ASSETS",
     "not_found_handling": "404-page",
     "run_worker_first": true
   },
-  "d1_databases": [
-    {
-      "binding": "ARG_DB",
-      "database_name": "egn-arg",
-      "database_id": "5e61f093-e093-4529-9cd1-23433dd53eca",
-      "migrations_dir": "migrations"
-    }
-  ],
   "env": {
     "preview": {
-      "name": "elemental-gaming-nexus-preview",
-      "workers_dev": true,
-      "preview_urls": true,
       "d1_databases": [
         {
           "binding": "ARG_DB",
           "database_name": "egn-arg-test",
-          "database_id": "b02fb28a-ef11-49de-8884-81a09b3616cc",
+          "database_id": "PASTE_EGN_ARG_TEST_DATABASE_ID_HERE",
           "migrations_dir": "migrations"
         }
       ]

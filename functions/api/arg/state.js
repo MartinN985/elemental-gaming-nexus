@@ -1,4 +1,5 @@
 import {
+  GLOBAL_CODES,
   MILESTONE_CODES,
   ensureVisitor,
   getCounts,
@@ -39,6 +40,10 @@ export async function onRequestGet(context) {
     .filter((item) => counts.personal >= item.threshold)
     .map(({ threshold, code, title }) => ({ threshold, code, title }));
 
+  const globalCodeSlots = GLOBAL_CODES
+    .filter((item) => globalPhase.id >= item.phase)
+    .map(({ phase, title }) => ({ phase, title }));
+
   const unlockedGlobalFiles = globalFilesForPhase(globalPhase.id)
     .map(({ slug, title, phase }) => ({ slug, title, phase }));
 
@@ -48,8 +53,9 @@ export async function onRequestGet(context) {
     globalConfirmedCount: counts.global,
     totalRawScans: counts.rawScans,
     nextThreshold: nextThreshold(counts.personal),
-    accessConsoleUnlocked: counts.personal >= 5,
+    accessConsoleUnlocked: counts.personal >= 5 || globalPhase.id >= 1,
     issuedCodes,
+    globalCodeSlots,
     encounteredSpecials,
     unlockedFiles,
     unlockedGlobalFiles,

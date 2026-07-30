@@ -1,6 +1,5 @@
 import {
   deniedPage,
-  escapeHtml,
   getVisitor,
   html,
   pageShell,
@@ -65,14 +64,6 @@ const PAGES = {
   }
 };
 
-function removedRecordPage() {
-  const cipher = "46 46 46 . 14 41 14 42 14 23 25 12 41 34 12 42 24 23 34 23 14 51 21 22 . 31 16 42 / 15 / 26 45 16 12 32";
-  return `<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow,noarchive"><title>404 | Elemental Gaming Nexus</title><style>
-html,body{min-height:100%;margin:0}body{display:grid;place-items:center;background:#fff;color:#171717;font-family:Arial,Helvetica,sans-serif}.box{width:min(680px,calc(100% - 40px));padding:70px 0;text-align:center}.code{font-size:clamp(5rem,18vw,11rem);font-weight:800;line-height:.8;letter-spacing:-.08em}.box h1{margin:30px 0 10px;font-size:1.45rem}.box p{color:#666}.home{display:inline-block;margin-top:20px;color:#171717}.cipher{position:fixed;right:8px;bottom:5px;left:8px;overflow-wrap:anywhere;color:#e7e7e7;text-align:center;font:9px/1.2 monospace;letter-spacing:.06em;user-select:text}@media(max-width:500px){.cipher{font-size:7px}}</style></head>
-<body><main class="box"><div class="code">404</div><h1>Page not found</h1><p>The requested page may have moved or no longer exists.</p><a class="home" href="/">Return home</a></main><div class="cipher" aria-label="unindexed footer data">${escapeHtml(cipher)}</div></body></html>`;
-}
-
 export async function onRequestGet(context) {
   const db = context.env.ARG_DB;
   if (!db) return html(deniedPage(), 503);
@@ -85,7 +76,7 @@ export async function onRequestGet(context) {
     return html(deniedPage(), 404);
   }
 
-  if (number === 404) return html(removedRecordPage(), 404);
+  if (number === 404) return Response.redirect(new URL("/y/404/", context.request.url), 302);
   const page = PAGES[number];
   return html(pageShell(page));
 }
