@@ -67,6 +67,15 @@ export async function handleArgRequest(request, env, ctx) {
     return tokenGet(contextFor(tokenParams));
   }
 
+  // QR generators that cannot encode path tokens: /i/?ribboncode=XXXXX
+  if (method === "GET" && path === "/i") {
+    const fromQuery =
+      url.searchParams.get("ribboncode") ||
+      url.searchParams.get("token") ||
+      "";
+    return tokenGet(contextFor({ token: fromQuery }));
+  }
+
   const specialParams = match(path, "/y/special/:number");
   if (method === "GET" && specialParams) {
     return specialGet(contextFor(specialParams));

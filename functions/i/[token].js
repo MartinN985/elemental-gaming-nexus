@@ -1,7 +1,17 @@
 import { html, normalizeToken } from "../_lib/arg.js";
 
+function resolveToken(context) {
+  const url = new URL(context.request.url);
+  // Accept /i/{token} and /i/?ribboncode={token}
+  return normalizeToken(
+    context.params?.token ||
+    url.searchParams.get("ribboncode") ||
+    url.searchParams.get("token")
+  );
+}
+
 export function onRequestGet(context) {
-  const token = normalizeToken(context.params.token);
+  const token = resolveToken(context);
   if (!token) {
     return html(`<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>Signal rejected</title><link rel="stylesheet" href="/assets/css/yellow-sign-v3.css?v=2"></head><body><main class="arg-shell"><section class="arg-panel"><p class="arg-kicker">SIGNAL REJECTED</p><h1 class="file-title">Unrecognized incursion point</h1><p class="file-copy">The signature is damaged, fabricated, or incomplete.</p></section></main></body></html>`, 404);
   }
