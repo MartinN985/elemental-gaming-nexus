@@ -8,5 +8,9 @@ INSERT OR IGNORE INTO arg_settings (setting_key, setting_value)
 VALUES ('global_phase_override', NULL);
 
 UPDATE arg_tokens
-SET special_slug = 'atlanta-assessment'
+SET special_slug = NULL
 WHERE ribbon_no = 2500;
+
+UPDATE arg_tokens
+SET special_slug = 'atlanta-assessment'
+WHERE ribbon_no = 1000;

@@ -998,7 +998,7 @@ INSERT OR REPLACE INTO arg_tokens (ribbon_no, token_hash, special_slug, active) 
 INSERT OR REPLACE INTO arg_tokens (ribbon_no, token_hash, special_slug, active) VALUES (997, '7986c1a9a6155ed76879c3832cf99e5331e3233c0638e750b52b468535000ae9', NULL, 1);
 INSERT OR REPLACE INTO arg_tokens (ribbon_no, token_hash, special_slug, active) VALUES (998, '9b744495fa072f146cfe9cce6bd274cecda555eb84ef920f7cabac7dc9102c85', NULL, 1);
 INSERT OR REPLACE INTO arg_tokens (ribbon_no, token_hash, special_slug, active) VALUES (999, 'f184d7aacc53d15a3cd355ec478c44e6301abd9268575df46786873af99e59ac', NULL, 1);
-INSERT OR REPLACE INTO arg_tokens (ribbon_no, token_hash, special_slug, active) VALUES (1000, '99e28330c71081d4772c0fccd3a253675593660de22ec34d47d2ef7e4f1f730c', NULL, 1);
+INSERT OR REPLACE INTO arg_tokens (ribbon_no, token_hash, special_slug, active) VALUES (1000, '99e28330c71081d4772c0fccd3a253675593660de22ec34d47d2ef7e4f1f730c', 'atlanta-assessment', 1);
 INSERT OR REPLACE INTO arg_tokens (ribbon_no, token_hash, special_slug, active) VALUES (1001, '3d1ec7547ef386a9310f7fb155c5274a9fdc2a07ba730177d9e661183e57cda7', NULL, 1);
 INSERT OR REPLACE INTO arg_tokens (ribbon_no, token_hash, special_slug, active) VALUES (1002, '69cc429967f0a1e3cb18b94fce93ad16f20532836c5868be36665b7febeb9633', NULL, 1);
 INSERT OR REPLACE INTO arg_tokens (ribbon_no, token_hash, special_slug, active) VALUES (1003, 'f670d999bffbfa1ebf4a5d7e0eae329d017cc65d2442cc9ee3b4f86730adebef', NULL, 1);
@@ -2498,4 +2498,4 @@ INSERT OR REPLACE INTO arg_tokens (ribbon_no, token_hash, special_slug, active) 
 INSERT OR REPLACE INTO arg_tokens (ribbon_no, token_hash, special_slug, active) VALUES (2497, '16f5ed057f2eb40a826dfa09a2e83ce8aebef7909042a8018f67be0460dab1b6', NULL, 1);
 INSERT OR REPLACE INTO arg_tokens (ribbon_no, token_hash, special_slug, active) VALUES (2498, '333a5a4d07f5898c1f11ca822d265370e8942450051c04f4149f5c57c16c7376', NULL, 1);
 INSERT OR REPLACE INTO arg_tokens (ribbon_no, token_hash, special_slug, active) VALUES (2499, '5f215a2d6fe8eb5730bb6df5d94ad3c9d08fe82fdd1285409b36d4f6b1ffe672', NULL, 1);
-INSERT OR REPLACE INTO arg_tokens (ribbon_no, token_hash, special_slug, active) VALUES (2500, '20ab19d3ae47d988780d8b7d68f7671e6b56c1b1e22996232843d6a7f5e92548', 'atlanta-assessment', 1);
+INSERT OR REPLACE INTO arg_tokens (ribbon_no, token_hash, special_slug, active) VALUES (2500, '20ab19d3ae47d988780d8b7d68f7671e6b56c1b1e22996232843d6a7f5e92548', NULL, 1);

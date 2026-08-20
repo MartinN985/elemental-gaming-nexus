@@ -22,7 +22,7 @@
     5: ["Filter instruction IV", "/y/special/0005"],
     404: ["Removed record", "/y/404/"],
     616: ["Correction index 616", "/y/616/"],
-    2500: ["Atlanta incident status update", "/y/special/2500"]
+    1000: ["Atlanta incident status update", "/y/special/1000"]
   };
 
   const addMaterial = (list, label, href, type = "") => {

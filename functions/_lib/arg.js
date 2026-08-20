@@ -10,7 +10,7 @@ export const SPECIAL_REDIRECTS = new Map([
   [5, "/y/special/0005"],
   [404, "/y/404/"],
   [616, "/y/616/"],
-  [2500, "/y/special/2500"]
+  [1000, "/y/special/1000"]
 ]);
 
 export const MILESTONE_CODES = [

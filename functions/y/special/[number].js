@@ -42,9 +42,9 @@ const PAGES = {
     eyebrow: "CARRIER SIGNAL // 0005",
     body: `<h1 class="file-title">Filter instruction IV</h1><p class="filter-clue">SIGNAL CALIBRATION PENDING.</p>`
   },
-  2500: {
+  1000: {
     title: "Atlanta incident status update",
-    eyebrow: "INCIDENT STATUS UPDATE // 2500",
+    eyebrow: "INCIDENT STATUS UPDATE // 1000",
     body: `
       <h1 class="file-title">Atlanta Incident</h1>
       <dl class="case-grid status-grid">
@@ -69,7 +69,7 @@ export async function onRequestGet(context) {
   if (!db) return html(deniedPage(), 503);
   const numberText = String(context.params.number || "").replace(/\D/g, "");
   const number = Number(numberText);
-  if (![1,2,3,4,5,404,2500].includes(number)) return html(deniedPage(), 404);
+  if (![1,2,3,4,5,404,1000].includes(number)) return html(deniedPage(), 404);
 
   const visitor = getVisitor(context.request);
   if (visitor.isNew || !(await requireEncounter(db, visitor.id, number))) {
