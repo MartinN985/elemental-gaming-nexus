@@ -19,7 +19,7 @@ export async function onRequestGet(context) {
     db.prepare(
       `SELECT ribbon_no, COUNT(*) AS unique_browsers, SUM(scan_count) AS raw_scans
        FROM arg_encounters
-       WHERE ribbon_no IN (1,2,3,4,5,404,616,1000)
+       WHERE ribbon_no IN (1,2,3,404,616,1000)
        GROUP BY ribbon_no ORDER BY ribbon_no`
     ),
     db.prepare(

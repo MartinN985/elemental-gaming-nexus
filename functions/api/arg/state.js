@@ -23,7 +23,7 @@ export async function onRequestGet(context) {
   const [specialResult, unlockResult] = await db.batch([
     db.prepare(
       `SELECT ribbon_no FROM arg_encounters
-       WHERE visitor_id = ?1 AND ribbon_no IN (1,2,3,4,5,404,616,1000)
+       WHERE visitor_id = ?1 AND ribbon_no IN (1,2,3,404,616,1000)
        ORDER BY ribbon_no`
     ).bind(visitor.id),
     db.prepare(

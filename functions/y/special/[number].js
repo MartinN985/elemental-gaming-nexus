@@ -32,16 +32,6 @@ const PAGES = {
     eyebrow: "CARRIER SIGNAL // 0003",
     body: `<h1 class="file-title">Filter instruction II</h1><p class="filter-clue">SIGNAL CALIBRATION PENDING.</p>`
   },
-  4: {
-    title: "Carrier instruction 0004",
-    eyebrow: "CARRIER SIGNAL // 0004",
-    body: `<h1 class="file-title">Filter instruction III</h1><p class="filter-clue">SIGNAL CALIBRATION PENDING.</p>`
-  },
-  5: {
-    title: "Carrier instruction 0005",
-    eyebrow: "CARRIER SIGNAL // 0005",
-    body: `<h1 class="file-title">Filter instruction IV</h1><p class="filter-clue">SIGNAL CALIBRATION PENDING.</p>`
-  },
   1000: {
     title: "Atlanta incident status update",
     eyebrow: "INCIDENT STATUS UPDATE // 1000",
@@ -69,7 +59,7 @@ export async function onRequestGet(context) {
   if (!db) return html(deniedPage(), 503);
   const numberText = String(context.params.number || "").replace(/\D/g, "");
   const number = Number(numberText);
-  if (![1,2,3,4,5,404,1000].includes(number)) return html(deniedPage(), 404);
+  if (![1,2,3,404,1000].includes(number)) return html(deniedPage(), 404);
 
   const visitor = getVisitor(context.request);
   if (visitor.isNew || !(await requireEncounter(db, visitor.id, number))) {

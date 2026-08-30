@@ -2,8 +2,8 @@
 INSERT OR REPLACE INTO arg_tokens (ribbon_no, token_hash, special_slug, active) VALUES (1, 'bf4caa213ab86a392fae9256abbbf0bf571e1b5be57ff851d86ca7bee07b1d77', 'source-image', 1);
 INSERT OR REPLACE INTO arg_tokens (ribbon_no, token_hash, special_slug, active) VALUES (2, '379e5af3caafa87cf1dfcfe430213548f64c1052a73841f85011772316bed0e0', 'filter-clue-1', 1);
 INSERT OR REPLACE INTO arg_tokens (ribbon_no, token_hash, special_slug, active) VALUES (3, '1ed408c6ac1dfb30543988aca700ce10d90aa5236b76965ef2d7ab61f30758e3', 'filter-clue-2', 1);
-INSERT OR REPLACE INTO arg_tokens (ribbon_no, token_hash, special_slug, active) VALUES (4, '7c78a602340e5366f1d5f3e86684c741ffb1462e1160e8102ae8162a6c1d6b9a', 'filter-clue-3', 1);
-INSERT OR REPLACE INTO arg_tokens (ribbon_no, token_hash, special_slug, active) VALUES (5, '8df3cbd8adb75364c647214f96e4e18b2b48be8cc4d82eb0a0a3dd56da2c95e6', 'filter-clue-4', 1);
+INSERT OR REPLACE INTO arg_tokens (ribbon_no, token_hash, special_slug, active) VALUES (4, '7c78a602340e5366f1d5f3e86684c741ffb1462e1160e8102ae8162a6c1d6b9a', NULL, 1);
+INSERT OR REPLACE INTO arg_tokens (ribbon_no, token_hash, special_slug, active) VALUES (5, '8df3cbd8adb75364c647214f96e4e18b2b48be8cc4d82eb0a0a3dd56da2c95e6', NULL, 1);
 INSERT OR REPLACE INTO arg_tokens (ribbon_no, token_hash, special_slug, active) VALUES (6, 'bd5f0742decddf13f2c5f2ddb9ee150924d66db0aae3240a007e482570ed9453', NULL, 1);
 INSERT OR REPLACE INTO arg_tokens (ribbon_no, token_hash, special_slug, active) VALUES (7, '834ea6fda7d1fc2b216d8ec51da7aae71a8b2afe794d9adea74cded845e64a3e', NULL, 1);
 INSERT OR REPLACE INTO arg_tokens (ribbon_no, token_hash, special_slug, active) VALUES (8, '26965a28a36f0d94651b6146345d4245c95a3c1b8c124456bbfaa3aaab4628bf', NULL, 1);

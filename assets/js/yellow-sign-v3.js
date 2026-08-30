@@ -18,8 +18,6 @@
     1: ["Source image 0001", "/y/special/0001"],
     2: ["Filter instruction I", "/y/special/0002"],
     3: ["Filter instruction II", "/y/special/0003"],
-    4: ["Filter instruction III", "/y/special/0004"],
-    5: ["Filter instruction IV", "/y/special/0005"],
     404: ["Removed record", "/y/404/"],
     616: ["Correction index 616", "/y/616/"],
     1000: ["Atlanta incident status update", "/y/special/1000"]

@@ -6,8 +6,6 @@ export const SPECIAL_REDIRECTS = new Map([
   [1, "/y/special/0001"],
   [2, "/y/special/0002"],
   [3, "/y/special/0003"],
-  [4, "/y/special/0004"],
-  [5, "/y/special/0005"],
   [404, "/y/404/"],
   [616, "/y/616/"],
   [1000, "/y/special/1000"]

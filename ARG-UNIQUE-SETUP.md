@@ -36,7 +36,7 @@ Use that key on `/y/admin/` to view statistics and set the global phase to autom
 2. Confirm each new token increases personal and global confirmed counts.
 3. Confirm rescanning the same token on the same browser increases raw scans but not personal/global confirmed counts.
 4. Confirm another browser scanning the same token increases the global count.
-5. Test special ribbons `0001`–`0005`, `0404`, `0616`, and `2500`.
+5. Test special ribbons `0001`–`0003`, `0404`, `0616`, and `1000`.
 6. Use the admin phase override to inspect phases 0–7 and every global report.
 7. Return phase control to `Automatic from count` after testing.
 8. Test the 5, 10, 25, 50, and 100 personal gates using a test browser or temporary development records.
