@@ -11,6 +11,7 @@ This version contains the public network website only. It intentionally does **n
 - `/listen/purity-bay/` — Purity Bay listen page (shareable)
 - `/listen/dungeon-crawler-degenerates/` — Dungeon Crawler Degenerates listen page (shareable)
 - `/listen/thats-redacted/` — alias that forwards to `/listen/`, so all three shows share the same URL pattern
+- `/connect/` — Discord, socials, Ko-fi, and contact (`connect/index.html`)
 - `/go` — short redirect to `/listen/`
 - `/shows/thats-redacted/` — That’s Redacted show page
 - `/shows/purity-bay/` — That’s Redacted: Purity Bay show page

@@ -133,6 +133,12 @@
     var(--panel);
 }
 
+.connect-discord {
+  background:
+    linear-gradient(135deg, rgba(22, 61, 50, 0.55), transparent 55%),
+    var(--panel);
+}
+
 .support-panel h2 {
   margin: 8px 0 12px;
   font-size: clamp(2.25rem, 5vw, 4.8rem);

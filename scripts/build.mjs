@@ -16,6 +16,7 @@ const entries = [
   "assets",
   "shows",
   "listen",
+  "connect",
   "go",
   "borislov",
   "terminal",
