@@ -69,7 +69,7 @@ After the first Git deploy succeeds, custom domains can be attached in the proje
 - EGN banner: `assets/images/egn-banner.png`
 - That’s Redacted cover: `assets/images/thats-redacted-cover.png`
 - Dungeon Crawler Degenerates cover: `assets/images/dungeon-crawler-degenerates-cover.jpg` (+ `.webp`)
-- Purity Bay map: `assets/images/purity-bay-map.svg`, shown in the `#map` section of `shows/purity-bay/index.html`. It is the Illustrator export with a sans-serif fallback added to its `font-family` (Myriad Pro isn’t installed on most visitors’ devices). Re-apply that fallback if you re-export the map.
+- Purity Bay map: `assets/images/purity-bay-map.svg`, shown in the `#map` section of `shows/purity-bay/index.html`. It is the Illustrator export with a sans-serif fallback added to its `font-family` (Myriad Pro isn’t installed on most visitors’ devices). The file also wraps the artwork in a `clipPath` set to the artboard (`0 0 1584 2016`) and has a dark background, because Illustrator keeps art outside the artboard in the export and browsers show it when the SVG is opened directly. Re-apply the font fallback and the artboard clip if you re-export the map. Illustrator’s “Use Artboards” export option does not remove off-artboard art from an SVG; it only sets the viewBox.
 - Purity Bay cover: not supplied yet. When it arrives, save it as `assets/images/purity-bay-cover.jpg` / `.webp` and replace the `.cover-placeholder` blocks in `index.html` and `shows/purity-bay/index.html` with a `<picture>`, and point the Purity Bay page’s `og:image` at it.
 
 ## Adding listening platforms later
