@@ -4,10 +4,10 @@
 
 Elemental Gaming Nexus is an independent actual-play podcast network.
 
-Current public show:
-- That’s Redacted
-- A Delta Green actual-play podcast
-- Hosted on Spreaker
+Current public shows (all hosted on Spreaker):
+- That’s Redacted — Delta Green actual play (`/shows/thats-redacted/`, show 6648144)
+- That’s Redacted: Purity Bay — Delta Green actual-play campaign (`/shows/purity-bay/`, show 7418794). No cover art yet; uses the `.cover-placeholder` tile until supplied.
+- Dungeon Crawler Degenerates — Dungeon Crawler Carl TTRPG actual play (`/shows/dungeon-crawler-degenerates/`, show 7301590)
 
 Primary contact:
 - dakota@elementalgamingnexus.com

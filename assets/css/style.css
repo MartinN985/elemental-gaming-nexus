@@ -410,6 +410,7 @@ textarea {
 .hero-art img {
   display: block;
   width: 100%;
+  height: auto;
   aspect-ratio: 1;
   object-fit: cover;
   border: 1px solid var(--line-strong);
@@ -476,11 +477,55 @@ textarea {
     var(--panel);
 }
 
+.show-list {
+  display: grid;
+  gap: clamp(24px, 4vw, 40px);
+}
+
 .show-cover {
   display: block;
   width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  object-fit: cover;
   border: 1px solid var(--line-strong);
   box-shadow: 0 22px 60px rgba(0, 0, 0, 0.38);
+}
+
+.cover-placeholder {
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: 14px;
+  width: 100%;
+  aspect-ratio: 1;
+  padding: 28px;
+  border: 1px solid var(--line-strong);
+  background:
+    repeating-linear-gradient(135deg, rgba(241, 239, 231, 0.025) 0 2px, transparent 2px 14px),
+    linear-gradient(160deg, rgba(22, 61, 50, 0.55), rgba(7, 10, 9, 0.95) 70%),
+    var(--bg-soft);
+  box-shadow: 0 22px 60px rgba(0, 0, 0, 0.38);
+  text-align: center;
+}
+
+.cover-placeholder-kicker,
+.cover-placeholder-note {
+  color: var(--muted-2);
+  text-transform: uppercase;
+  letter-spacing: 0.17em;
+  font: 750 0.68rem/1.4 ui-monospace, SFMono-Regular, Consolas, monospace;
+}
+
+.cover-placeholder-kicker {
+  color: var(--signal);
+}
+
+.cover-placeholder strong {
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  line-height: 0.92;
+  letter-spacing: -0.055em;
+  font-weight: 860;
 }
 
 .show-meta {
@@ -773,6 +818,46 @@ textarea {
   margin-bottom: 0;
 }
 
+.map-figure {
+  width: min(100%, 820px);
+  margin: 0 auto;
+}
+
+.map-link {
+  display: block;
+  border: 1px solid var(--line-strong);
+  background: #b7b5a0;
+  box-shadow: var(--shadow);
+}
+
+.map-link img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1584 / 2016;
+}
+
+.map-link:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 4px;
+}
+
+.map-figure figcaption {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 12px;
+  padding-top: 14px;
+  color: var(--muted-2);
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font: 700 0.63rem/1.4 ui-monospace, SFMono-Regular, Consolas, monospace;
+}
+
+.map-figure figcaption a {
+  color: var(--muted);
+}
+
 .listen-strip {
   display: flex;
   align-items: center;
@@ -914,7 +999,8 @@ textarea {
     padding: 18px;
   }
 
-  .show-cover {
+  .show-cover,
+  .show-feature .cover-placeholder {
     max-width: 410px;
   }
 

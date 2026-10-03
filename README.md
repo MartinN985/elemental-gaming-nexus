@@ -8,8 +8,13 @@ This version contains the public network website only. It intentionally does **n
 
 - `/` — network homepage
 - `/listen/` — listening hub (Spotify, Apple, Amazon, Spreaker, Ko-fi)
+- `/listen/purity-bay/` — Purity Bay listen page (shareable)
+- `/listen/dungeon-crawler-degenerates/` — Dungeon Crawler Degenerates listen page (shareable)
+- `/listen/thats-redacted/` — alias that forwards to `/listen/`, so all three shows share the same URL pattern
 - `/go` — short redirect to `/listen/`
 - `/shows/thats-redacted/` — That’s Redacted show page
+- `/shows/purity-bay/` — That’s Redacted: Purity Bay show page
+- `/shows/dungeon-crawler-degenerates/` — Dungeon Crawler Degenerates show page
 - `/404.html` — custom not-found page
 
 ## Local preview in Cursor
@@ -62,6 +67,9 @@ After the first Git deploy succeeds, custom domains can be attached in the proje
 - EGN logo: `assets/images/egn-logo.png`
 - EGN banner: `assets/images/egn-banner.png`
 - That’s Redacted cover: `assets/images/thats-redacted-cover.png`
+- Dungeon Crawler Degenerates cover: `assets/images/dungeon-crawler-degenerates-cover.jpg` (+ `.webp`)
+- Purity Bay map: `assets/images/purity-bay-map.svg`, shown in the `#map` section of `shows/purity-bay/index.html`. It is the Illustrator export with a sans-serif fallback added to its `font-family` (Myriad Pro isn’t installed on most visitors’ devices). Re-apply that fallback if you re-export the map.
+- Purity Bay cover: not supplied yet. When it arrives, save it as `assets/images/purity-bay-cover.jpg` / `.webp` and replace the `.cover-placeholder` blocks in `index.html` and `shows/purity-bay/index.html` with a `<picture>`, and point the Purity Bay page’s `og:image` at it.
 
 ## Adding listening platforms later
 
@@ -69,4 +77,6 @@ The public design currently shows only Spreaker because no verified Apple Podcas
 
 ## Spreaker player
 
-The player embed is based on the code supplied by Spreaker. It currently references episode ID `66424703` while displaying the show playlist. Regenerate the show embed in Spreaker if you want a different default episode or player configuration.
+Purity Bay and Dungeon Crawler Degenerates had no published episodes at launch, and the Spreaker widget shows “This podcast is unavailable” for an empty show. Their pages keep the player markup (`data-resource="show_id=…"`) but have the `widgets.js` script tag commented out, so visitors see a “first episode coming soon” panel linking to Spreaker. After each show’s first episode is live, uncomment that script tag at the bottom of its page to turn on the real player.
+
+The That’s Redacted player embed is based on the code supplied by Spreaker. It currently references episode ID `66424703` while displaying the show playlist. Regenerate the show embed in Spreaker if you want a different default episode or player configuration.
