@@ -657,6 +657,12 @@ textarea {
   gap: 12px;
 }
 
+.contact-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
 .email-link {
   display: inline-flex;
   align-items: center;
