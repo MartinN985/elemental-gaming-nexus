@@ -115,6 +115,23 @@
   font-size: 1.2rem;
 }
 
+.platform-grid--compact {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-top: 28px;
+}
+
+.platform-grid--compact .platform-card {
+  min-height: 112px;
+  gap: 14px;
+  padding: 20px;
+}
+
+@media (max-width: 1100px) {
+  .platform-grid--compact {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 .listen-player {
   background:
     linear-gradient(180deg, rgba(22, 61, 50, 0.08), transparent),
