@@ -23,62 +23,31 @@
     });
   }
 
-  document.querySelectorAll("[data-tabs]").forEach((root) => {
-    const tabs = [...root.querySelectorAll("[data-tab]")];
-    const panels = [...root.querySelectorAll("[data-panel]")];
-    if (!tabs.length) return;
+  document.querySelectorAll("[data-scrollspy]").forEach((nav) => {
+    const links = [...nav.querySelectorAll('a[href^="#"]')];
+    const sections = links
+      .map((link) => document.getElementById(link.hash.slice(1)))
+      .filter(Boolean);
+    if (!sections.length || !("IntersectionObserver" in window)) return;
 
-    tabs[0].parentElement.setAttribute("role", "tablist");
-    tabs.forEach((tab) => {
-      tab.setAttribute("role", "tab");
-      tab.id = `tab-${tab.dataset.tab}`;
-      tab.setAttribute("aria-controls", tab.dataset.tab);
-    });
-    panels.forEach((panel) => {
-      panel.setAttribute("role", "tabpanel");
-      panel.setAttribute("tabindex", "0");
-      panel.setAttribute("aria-labelledby", `tab-${panel.dataset.panel}`);
-    });
-
-    const select = (name, focus) => {
-      tabs.forEach((tab) => {
-        const active = tab.dataset.tab === name;
-        tab.setAttribute("aria-selected", String(active));
-        tab.tabIndex = active ? 0 : -1;
-        if (active && focus) tab.focus();
-      });
-      panels.forEach((panel) => {
-        panel.hidden = panel.dataset.panel !== name;
+    const visible = new Set();
+    const mark = () => {
+      const current = sections.find((section) => visible.has(section)) || null;
+      links.forEach((link) => {
+        if (current && link.hash === `#${current.id}`) link.setAttribute("aria-current", "true");
+        else link.removeAttribute("aria-current");
       });
     };
 
-    const activate = (tab, focus) => {
-      select(tab.dataset.tab, focus);
-      history.replaceState(null, "", `#${tab.dataset.tab}`);
-    };
-
-    tabs.forEach((tab, index) => {
-      tab.addEventListener("click", (event) => {
-        event.preventDefault();
-        activate(tab);
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) visible.add(entry.target);
+        else visible.delete(entry.target);
       });
-      tab.addEventListener("keydown", (event) => {
-        const step = { ArrowDown: 1, ArrowRight: 1, ArrowUp: -1, ArrowLeft: -1 }[event.key];
-        if (!step) return;
-        event.preventDefault();
-        activate(tabs[(index + step + tabs.length) % tabs.length], true);
-      });
-    });
+      mark();
+    }, { rootMargin: "-160px 0px -55% 0px" });
 
-    const fromHash = () => {
-      const match = tabs.find((tab) => tab.dataset.tab === location.hash.slice(1));
-      select(match ? match.dataset.tab : tabs[0].dataset.tab);
-      if (match) root.closest("section").scrollIntoView();
-    };
-
-    root.dataset.tabsReady = "true";
-    fromHash();
-    window.addEventListener("hashchange", fromHash);
+    sections.forEach((section) => observer.observe(section));
   });
 
   document.querySelectorAll("[data-year]").forEach((node) => {
