@@ -679,8 +679,8 @@ textarea {
 
 .footer-top {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) auto auto;
-  gap: clamp(32px, 7vw, 86px);
+  grid-template-columns: minmax(0, 1fr) auto auto auto;
+  gap: clamp(32px, 6vw, 72px);
   align-items: start;
 }
 
