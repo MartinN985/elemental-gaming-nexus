@@ -651,6 +651,12 @@ textarea {
   color: var(--muted);
 }
 
+.contact-links {
+  display: grid;
+  justify-items: start;
+  gap: 12px;
+}
+
 .email-link {
   display: inline-flex;
   align-items: center;
