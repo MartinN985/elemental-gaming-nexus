@@ -120,12 +120,12 @@ textarea {
   pointer-events: none;
   background-color: #000;
   background-image: image-set(
-    url("/assets/images/egn-banner.webp") type("image/webp"),
-    url("/assets/images/egn-banner.png") type("image/png")
+    url("/assets/images/egn-banner-strip.webp") type("image/webp"),
+    url("/assets/images/egn-banner-strip.png") type("image/png")
   );
   background-repeat: no-repeat;
-  background-position: center calc(50% - 10px);
-  background-size: 1100px auto;
+  background-position: center;
+  background-size: auto 100%;
 }
 
 .site-header--banner .site-header-banner picture {
@@ -1210,6 +1210,11 @@ main section[id] {
   .wordmark-logo {
     width: 36px;
     height: 36px;
+  }
+
+  .site-header--banner .site-header-banner {
+    background-position: calc(50% + 30px) center;
+    background-size: auto 82%;
   }
 
   .site-header--banner .wordmark-logo {

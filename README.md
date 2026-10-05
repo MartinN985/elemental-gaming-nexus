@@ -66,7 +66,8 @@ After the first Git deploy succeeds, custom domains can be attached in the proje
 - Shared design: `assets/css/style.css`
 - Mobile navigation: `assets/js/site.js`
 - EGN logo: `assets/images/egn-logo.png`
-- EGN banner: `assets/images/egn-banner.png`
+- EGN banner: `assets/images/egn-banner.png` (social share image)
+- Header strip: `assets/images/egn-banner-strip.png` / `.webp` (16:1, scaled to the 76px header height)
 - That’s Redacted cover: `assets/images/thats-redacted-cover.png`
 - Dungeon Crawler Degenerates cover: `assets/images/dungeon-crawler-degenerates-cover.jpg` (+ `.webp`)
 - Purity Bay map: `assets/images/purity-bay-map.svg`, shown in the `#map` section of `shows/purity-bay/index.html`. It is the Illustrator export with a sans-serif fallback added to its `font-family` (Myriad Pro isn’t installed on most visitors’ devices). The file also wraps the artwork in a `clipPath` set to the artboard (`0 0 1584 2016`) and has a dark background, because Illustrator keeps art outside the artboard in the export and browsers show it when the SVG is opened directly. Re-apply the font fallback and the artboard clip if you re-export the map. Illustrator’s “Use Artboards” export option does not remove off-artboard art from an SVG; it only sets the viewBox.
