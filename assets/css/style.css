@@ -47,8 +47,18 @@ body::before {
   z-index: 100;
   pointer-events: none;
   opacity: 0.025;
-  background-image:
-    url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.86' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.95'/%3E%3C/svg%3E");
+  background-image: url("/assets/images/noise-tile.png");
+  background-image: image-set(
+    url("/assets/images/noise-tile.webp") type("image/webp"),
+    url("/assets/images/noise-tile.png") type("image/png")
+  );
+  background-size: 512px 512px;
+}
+
+@media (min-resolution: 2dppx) {
+  body::before {
+    background-size: 256px 256px;
+  }
 }
 
 img {
