@@ -52,7 +52,7 @@
 }
 
 .listen-hero--compact .listen-hero-grid {
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  grid-template-columns: minmax(260px, 400px) minmax(0, 1fr);
   gap: clamp(28px, 5vw, 64px);
 }
 
