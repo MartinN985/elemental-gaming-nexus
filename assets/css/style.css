@@ -884,6 +884,30 @@ main section[id] {
   scroll-margin-top: 140px;
 }
 
+.map-page {
+  padding-top: clamp(40px, 6vw, 72px);
+}
+
+.map-page h1 {
+  margin: 12px 0;
+  font-size: clamp(2.4rem, 4.6vw, 4rem);
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+}
+
+.map-page .lede {
+  font-size: 1rem;
+}
+
+.map-page .actions {
+  margin-top: 22px;
+}
+
+.map-page .map-figure {
+  width: min(100%, 1000px);
+  margin: 40px 0 0;
+}
+
 .show-layout {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 250px;
