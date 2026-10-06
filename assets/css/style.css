@@ -1090,7 +1090,7 @@ main section[id] {
 
   .show-layout {
     grid-template-columns: 1fr;
-    grid-template-areas: "side" "main";
+    grid-template-areas: "main" "side";
     gap: 40px;
   }
 
