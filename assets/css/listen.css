@@ -70,6 +70,10 @@
   margin-top: 22px;
 }
 
+.listen-hero--square .listen-hero-grid {
+  grid-template-columns: minmax(200px, 280px) minmax(0, 1fr);
+}
+
 .listen-cover--wide {
   aspect-ratio: 16 / 9;
 }
@@ -246,6 +250,10 @@
 
   .listen-hero--compact .listen-cover-wrap {
     width: min(100%, 640px);
+  }
+
+  .listen-hero--square .listen-cover-wrap {
+    width: min(100%, 280px);
   }
 
   .platform-grid {
