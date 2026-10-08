@@ -14,7 +14,7 @@ This version contains the public network website only. It intentionally does **n
 - `/connect/` — Discord, socials, Ko-fi, and contact (`connect/index.html`)
 - `/go` — short redirect to `/listen/`
 - `/shows/thats-redacted/` — That’s Redacted show page
-- `/shows/purity-bay/` — That’s Redacted: Purity Bay show page
+- `/shows/purity-bay/` — Purity Bay show page
 - `/shows/dungeon-crawler-degenerates/` — Dungeon Crawler Degenerates show page
 - `/404.html` — custom not-found page
 
