@@ -79,6 +79,6 @@ The public design currently shows only Spreaker because no verified Apple Podcas
 
 ## Spreaker player
 
-Purity Bay and Dungeon Crawler Degenerates had no published episodes at launch, and the Spreaker widget shows “This podcast is unavailable” for an empty show. Their pages keep the player markup (`data-resource="show_id=…"`) but have the `widgets.js` script tag commented out, so visitors see a “first episode coming soon” panel linking to Spreaker. After each show’s first episode is live, uncomment that script tag at the bottom of its page to turn on the real player.
+The Spreaker widget shows “This podcast is unavailable” for an empty show. If a new show has no episodes yet, keep the player markup (`data-resource="show_id=…"`) and comment out the `widgets.js` script tag so visitors see a “first episode coming soon” panel linking to Spreaker. Uncomment that script once the first episode is live. Purity Bay and Dungeon Crawler Degenerates both have episodes, so their players are on.
 
 The That’s Redacted player embed is based on the code supplied by Spreaker. It currently references episode ID `66424703` while displaying the show playlist. Regenerate the show embed in Spreaker if you want a different default episode or player configuration.
